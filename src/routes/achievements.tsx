@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Award, Shield, Star } from "lucide-react";
+import cap from "@/assets/heroes/cap.jpg.asset.json";
 
 export const Route = createFileRoute("/achievements")({
   head: () => ({
@@ -27,9 +28,13 @@ const items = [
 function Achievements() {
   return (
     <div className="theme-cap cursor-cap min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 opacity-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--hero)_0%,transparent_60%)]" />
+      {/* Captain America backdrop — blueprint tech */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <img src={cap.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/70 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--hero)_0%,transparent_60%)] opacity-20" />
       </div>
+
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="text-center mb-14">

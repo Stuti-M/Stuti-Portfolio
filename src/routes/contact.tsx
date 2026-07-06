@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Github, Mail, Phone, MessageSquare, Target } from "lucide-react";
+import hawkeyeCity from "@/assets/heroes/hawkeye-city.jpg.asset.json";
+import hawkeyeTarget from "@/assets/heroes/hawkeye-target.jpg.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,13 +23,20 @@ const contacts = [
 function Contact() {
   return (
     <div className="theme-hawkeye cursor-hawkeye min-h-[calc(100vh-5rem)] relative overflow-hidden">
+      {/* Hawkeye backdrop — cityscape silhouette + target rings */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <img src={hawkeyeCity.url} alt="" className="absolute inset-0 h-full w-full object-cover object-bottom opacity-30" />
+        <img src={hawkeyeTarget.url} alt="" className="absolute inset-0 h-full w-full object-contain object-right opacity-15 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/75 to-background" />
+      </div>
       {/* target rings background */}
-      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-[0.07]">
+      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-[0.08]">
         {[600, 480, 360, 240, 120].map(s => (
           <div key={s} className="absolute rounded-full border-2 border-hero" style={{ width: s, height: s }} />
         ))}
         <div className="absolute h-2 w-2 rounded-full bg-hero" />
       </div>
+
 
       <section className="mx-auto max-w-5xl px-6 py-16">
         <div className="text-center mb-12">

@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Github, Linkedin, Mail } from "lucide-react";
+import ironman from "@/assets/heroes/ironman.jpg.asset.json";
+import ironmanBlueprint from "@/assets/heroes/ironman-blueprint.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,11 +17,15 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="theme-ironman cursor-ironman min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Iron Man atmosphere */}
-      <div className="absolute inset-0 -z-10 opacity-40">
-        <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary blur-[120px]" />
-        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-secondary blur-[120px]" />
+      {/* Iron Man backdrop — armor + HUD blueprint */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <img src={ironman.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-40 mix-blend-screen" />
+        <img src={ironmanBlueprint.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-20 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
+        <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary blur-[140px] opacity-40" />
+        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-secondary blur-[140px] opacity-40" />
       </div>
+
 
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="grid md:grid-cols-[1fr_auto] items-center gap-12">
