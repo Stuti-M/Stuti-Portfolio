@@ -1,33 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { ExternalLink, Loader2 } from "lucide-react";
+import { getLeetCodeStats, type LeetCodeStats as Stats } from "@/lib/leetcode.functions";
 
-type Stats = {
-  totalSolved: number;
-  totalQuestions: number;
-  easySolved: number;
-  totalEasy: number;
-  mediumSolved: number;
-  totalMedium: number;
-  hardSolved: number;
-  totalHard: number;
-  ranking?: number;
-  acceptanceRate?: number;
-};
-
-async function fetchLeetCode(username: string): Promise<Stats> {
-  // Public unofficial proxy — mirrors LeetCode's GraphQL. If it fails, we fall back.
+async function fetchViaProxy(username: string): Promise<Stats> {
   const res = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
   if (!res.ok) throw new Error("stats unreachable");
   const d = await res.json();
   if (d.status !== "success") throw new Error(d.message ?? "no data");
-  return d;
+  return d as Stats;
 }
 
 export function LeetCodeProgress({ username }: { username: string }) {
+  const fetchStats = useServerFn(getLeetCodeStats);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["leetcode", username],
-    queryFn: () => fetchLeetCode(username),
+    queryFn: async () => {
+      // Try browser proxy first (fast, no server round-trip); fall back to server scraper.
+      try {
+        return await fetchViaProxy(username);
+      } catch {
+        return await fetchStats({ data: { username } });
+      }
+    },
     refetchInterval: 60_000,
     retry: 1,
   });
