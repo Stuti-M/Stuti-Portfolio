@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
+import widow from "@/assets/heroes/widow.jpg.asset.json";
 
 export const Route = createFileRoute("/skills")({
   head: () => ({
@@ -21,9 +22,13 @@ const groups = [
 function Skills() {
   return (
     <div className="theme-widow cursor-widow min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 opacity-30">
-        <div className="absolute top-0 right-1/4 h-96 w-96 rounded-full bg-hero blur-[140px]" />
+      {/* Black Widow backdrop */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <img src={widow.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/60" />
+        <div className="absolute top-0 right-1/4 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
       </div>
+
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-12">
           <p className="font-display text-sm tracking-[0.35em] text-hero uppercase flex items-center gap-2">

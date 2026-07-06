@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Github, ExternalLink, Code2 } from "lucide-react";
+import hulk from "@/assets/heroes/hulk.jpg.asset.json";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -20,10 +21,14 @@ const projects = [
 function Projects() {
   return (
     <div className="theme-hulk cursor-hulk min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 opacity-30">
-        <div className="absolute top-1/3 left-0 h-96 w-96 rounded-full bg-hero blur-[140px]" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-purple-700 blur-[140px]" />
+      {/* Hulk backdrop — smash storm */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <img src={hulk.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/70 to-background" />
+        <div className="absolute top-1/3 left-0 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-purple-700 blur-[140px] opacity-30" />
       </div>
+
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="mb-12">
