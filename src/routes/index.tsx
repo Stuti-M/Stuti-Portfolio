@@ -23,8 +23,14 @@ function Home() {
         <img src={ironman.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-70 mix-blend-screen" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,oklch(0.55_0.22_25/0.45),transparent_55%),radial-gradient(ellipse_at_bottom_right,oklch(0.78_0.16_78/0.35),transparent_55%)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/55 to-background" />
-        <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary blur-[140px] opacity-50" />
-        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-secondary blur-[140px] opacity-50" />
+        <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary blur-[140px] opacity-50 neon-drift" />
+        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-secondary blur-[140px] opacity-50 neon-drift" style={{ animationDelay: "-6s" }} />
+        {/* Floating neon HUD glyphs — arc reactor sparks */}
+        <div className="absolute top-[18%] left-[8%] h-3 w-3 rounded-full bg-cyan-300 neon-float text-cyan-300 neon-pulse" />
+        <div className="absolute top-[70%] left-[12%] h-2 w-2 rounded-full bg-secondary neon-float-slow text-yellow-300 neon-pulse" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-[30%] right-[10%] h-4 w-4 rounded-full border-2 border-cyan-300 text-cyan-300 neon-float neon-pulse" />
+        <div className="absolute top-[55%] right-[18%] h-2 w-2 rounded-full bg-red-500 text-red-500 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
+        <div className="absolute top-[85%] left-[45%] h-2.5 w-2.5 rounded-full bg-cyan-200 text-cyan-200 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
       </div>
 
 

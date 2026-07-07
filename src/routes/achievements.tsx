@@ -34,7 +34,13 @@ function Achievements() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.35_0.15_250/0.55),transparent_60%),radial-gradient(ellipse_at_bottom,oklch(0.5_0.2_20/0.4),transparent_60%)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/60 to-background" />
         <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0_120px,oklch(0.98_0_0/0.04)_120px_121px)]" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40 neon-drift" />
+        {/* Floating stars & shield sparks */}
+        <div className="absolute top-[12%] left-[8%] h-3 w-3 rounded-full bg-red-500 text-red-500 neon-float neon-pulse" />
+        <div className="absolute top-[22%] right-[10%] h-2 w-2 rounded-full bg-blue-400 text-blue-400 neon-float-slow neon-pulse" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-[62%] left-[12%] h-2.5 w-2.5 rounded-full bg-white text-white neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
+        <div className="absolute top-[78%] right-[16%] h-3 w-3 rounded-full border-2 border-red-500 text-red-500 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
+        <div className="absolute top-[48%] right-[42%] h-1.5 w-1.5 rounded-full bg-blue-300 text-blue-300 neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
       </div>
 
 

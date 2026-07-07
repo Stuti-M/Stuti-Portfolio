@@ -179,3 +179,28 @@
   92%, 96% { opacity: 0.4; }
   94% { opacity: 1; }
 }
+@utility neon-float {
+  animation: neonFloat 7s ease-in-out infinite;
+}
+@utility neon-float-slow {
+  animation: neonFloat 11s ease-in-out infinite;
+}
+@keyframes neonFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.75; }
+  50% { transform: translate3d(0, -22px, 0) scale(1.08); opacity: 1; }
+}
+@utility neon-drift {
+  animation: neonDrift 14s linear infinite;
+}
+@keyframes neonDrift {
+  0% { transform: translate3d(-8%, 0, 0); }
+  50% { transform: translate3d(8%, -6%, 0); }
+  100% { transform: translate3d(-8%, 0, 0); }
+}
+@utility neon-pulse {
+  animation: neonPulse 3.2s ease-in-out infinite;
+}
+@keyframes neonPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 14px currentColor); opacity: 0.9; }
+  50% { filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 32px currentColor); opacity: 1; }
+}

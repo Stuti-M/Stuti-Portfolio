@@ -29,6 +29,12 @@ function Contact() {
         <img src={hawkeyeTarget.url} alt="" className="absolute inset-0 h-full w-full object-contain object-right opacity-35 mix-blend-screen" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.4_0.15_300/0.55),transparent_55%),radial-gradient(ellipse_at_bottom_left,oklch(0.6_0.22_340/0.4),transparent_55%)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/60 to-background" />
+        {/* Floating arrows & purple sparks */}
+        <div className="absolute top-[18%] left-[10%] h-3 w-3 rounded-full bg-purple-400 text-purple-400 neon-float neon-pulse" />
+        <div className="absolute top-[45%] left-[6%] h-2 w-2 rounded-full bg-fuchsia-400 text-fuchsia-400 neon-float-slow neon-pulse" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-[30%] right-[8%] h-4 w-4 rounded-full border-2 border-purple-400 text-purple-400 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
+        <div className="absolute top-[72%] left-[40%] h-2 w-2 rounded-full bg-yellow-300 text-yellow-300 neon-float-slow neon-pulse" style={{ animationDelay: "-4s" }} />
+        <div className="absolute top-[62%] right-[22%] h-2.5 w-2.5 rounded-full bg-violet-500 text-violet-500 neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
       </div>
       {/* target rings background */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-[0.08]">
