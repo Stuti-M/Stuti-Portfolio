@@ -26,8 +26,14 @@ function Projects() {
         <img src={hulk.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-65" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.5_0.2_145/0.5),transparent_55%),radial-gradient(ellipse_at_bottom_right,oklch(0.35_0.15_300/0.45),transparent_55%)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        <div className="absolute top-1/3 left-0 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-55" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-purple-700 blur-[140px] opacity-45" />
+        <div className="absolute top-1/3 left-0 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-55 neon-drift" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-purple-700 blur-[140px] opacity-45 neon-drift" style={{ animationDelay: "-6s" }} />
+        {/* Floating gamma sparks */}
+        <div className="absolute top-[14%] left-[12%] h-3 w-3 rounded-full bg-lime-400 text-lime-400 neon-float neon-pulse" />
+        <div className="absolute top-[38%] right-[8%] h-2.5 w-2.5 rounded-full bg-green-400 text-green-400 neon-float-slow neon-pulse" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-[66%] left-[8%] h-2 w-2 rounded-full bg-purple-500 text-purple-500 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
+        <div className="absolute top-[80%] right-[24%] h-4 w-4 rounded-full border-2 border-lime-400 text-lime-400 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
+        <div className="absolute top-[26%] right-[38%] h-1.5 w-1.5 rounded-full bg-green-300 text-green-300 neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
       </div>
 
 
