@@ -23,11 +23,12 @@ const contacts = [
 function Contact() {
   return (
     <div className="theme-hawkeye cursor-hawkeye min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Hawkeye backdrop — cityscape silhouette + target rings */}
+      {/* Hawkeye backdrop — Ronin cityscape + target rings, purple/magenta */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={hawkeyeCity.url} alt="" className="absolute inset-0 h-full w-full object-cover object-bottom opacity-30" />
-        <img src={hawkeyeTarget.url} alt="" className="absolute inset-0 h-full w-full object-contain object-right opacity-15 mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/75 to-background" />
+        <img src={hawkeyeCity.url} alt="" className="absolute inset-0 h-full w-full object-cover object-bottom opacity-55" />
+        <img src={hawkeyeTarget.url} alt="" className="absolute inset-0 h-full w-full object-contain object-right opacity-35 mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.4_0.15_300/0.55),transparent_55%),radial-gradient(ellipse_at_bottom_left,oklch(0.6_0.22_340/0.4),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/60 to-background" />
       </div>
       {/* target rings background */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-[0.08]">
