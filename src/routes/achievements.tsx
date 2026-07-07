@@ -28,11 +28,13 @@ const items = [
 function Achievements() {
   return (
     <div className="theme-cap cursor-cap min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Captain America backdrop — blueprint tech */}
+      {/* Captain America backdrop — blueprint tech, red/white/blue */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={cap.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/70 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--hero)_0%,transparent_60%)] opacity-20" />
+        <img src={cap.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-55" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.35_0.15_250/0.55),transparent_60%),radial-gradient(ellipse_at_bottom,oklch(0.5_0.2_20/0.4),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0_120px,oklch(0.98_0_0/0.04)_120px_121px)]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
       </div>
 
 
