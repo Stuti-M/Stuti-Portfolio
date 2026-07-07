@@ -17,13 +17,14 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="theme-ironman cursor-ironman min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Iron Man backdrop — armor + HUD blueprint */}
+      {/* Iron Man backdrop — armor + HUD blueprint, hot-rod red & gold */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={ironman.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-40 mix-blend-screen" />
-        <img src={ironmanBlueprint.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-20 mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
-        <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary blur-[140px] opacity-40" />
-        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-secondary blur-[140px] opacity-40" />
+        <img src={ironmanBlueprint.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-30" />
+        <img src={ironman.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-70 mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,oklch(0.55_0.22_25/0.45),transparent_55%),radial-gradient(ellipse_at_bottom_right,oklch(0.78_0.16_78/0.35),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/55 to-background" />
+        <div className="absolute top-20 left-1/4 h-96 w-96 rounded-full bg-primary blur-[140px] opacity-50" />
+        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-secondary blur-[140px] opacity-50" />
       </div>
 
 

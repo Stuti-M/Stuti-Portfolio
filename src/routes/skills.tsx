@@ -22,11 +22,12 @@ const groups = [
 function Skills() {
   return (
     <div className="theme-widow cursor-widow min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Black Widow backdrop */}
+      {/* Black Widow backdrop — crimson & obsidian */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={widow.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/60" />
-        <div className="absolute top-0 right-1/4 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
+        <img src={widow.url} alt="" className="absolute inset-0 h-full w-full object-cover object-right opacity-60" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,oklch(0.45_0.22_20/0.5),transparent_55%),radial-gradient(ellipse_at_left,oklch(0.15_0.01_260/0.7),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/40" />
+        <div className="absolute top-0 right-1/4 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-50" />
       </div>
 
       <section className="mx-auto max-w-6xl px-6 py-16">

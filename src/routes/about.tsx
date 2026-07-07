@@ -17,13 +17,14 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <div className="theme-thor cursor-thor min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Thor backdrop — stormcaller + Mjolnir lightning */}
+      {/* Thor backdrop — stormcaller cosmos + Mjolnir lightning, asgardian blue & gold */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={thorStorm.url} alt="" className="absolute inset-0 h-full w-full object-cover object-top opacity-50" />
-        <img src={thorNeon.url} alt="" className="absolute inset-0 h-full w-full object-cover object-left opacity-30 mix-blend-screen" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background" />
-        <div className="absolute top-10 left-10 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
-        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-yellow-300 blur-[140px] opacity-30" />
+        <img src={thorStorm.url} alt="" className="absolute inset-0 h-full w-full object-cover object-top opacity-70" />
+        <img src={thorNeon.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-45 mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.55_0.2_240/0.5),transparent_60%),radial-gradient(ellipse_at_bottom,oklch(0.9_0.15_90/0.25),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+        <div className="absolute top-10 left-10 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-50" />
+        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-yellow-300 blur-[140px] opacity-35" />
       </div>
 
       <section className="mx-auto max-w-6xl px-6 py-16">

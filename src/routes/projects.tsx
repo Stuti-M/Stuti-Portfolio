@@ -21,12 +21,13 @@ const projects = [
 function Projects() {
   return (
     <div className="theme-hulk cursor-hulk min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Hulk backdrop — smash storm */}
+      {/* Hulk backdrop — smash storm, gamma green & violet */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={hulk.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/70 to-background" />
-        <div className="absolute top-1/3 left-0 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-purple-700 blur-[140px] opacity-30" />
+        <img src={hulk.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-65" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.5_0.2_145/0.5),transparent_55%),radial-gradient(ellipse_at_bottom_right,oklch(0.35_0.15_300/0.45),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+        <div className="absolute top-1/3 left-0 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-55" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-purple-700 blur-[140px] opacity-45" />
       </div>
 
 
