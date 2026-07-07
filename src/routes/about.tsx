@@ -23,8 +23,14 @@ function About() {
         <img src={thorNeon.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-45 mix-blend-screen" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.55_0.2_240/0.5),transparent_60%),radial-gradient(ellipse_at_bottom,oklch(0.9_0.15_90/0.25),transparent_60%)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        <div className="absolute top-10 left-10 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-50" />
-        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-yellow-300 blur-[140px] opacity-35" />
+        <div className="absolute top-10 left-10 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-50 neon-drift" />
+        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-yellow-300 blur-[140px] opacity-35 neon-drift" style={{ animationDelay: "-7s" }} />
+        {/* Floating storm sparks */}
+        <div className="absolute top-[15%] right-[12%] h-3 w-3 rounded-full bg-cyan-200 text-cyan-200 neon-float neon-pulse" />
+        <div className="absolute top-[40%] left-[10%] h-2 w-2 rounded-full bg-blue-400 text-blue-400 neon-float-slow neon-pulse" style={{ animationDelay: "-4s" }} />
+        <div className="absolute top-[68%] left-[38%] h-2.5 w-2.5 rounded-full bg-yellow-300 text-yellow-300 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
+        <div className="absolute top-[82%] right-[22%] h-3 w-3 rounded-full border-2 border-cyan-300 text-cyan-300 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
+        <div className="absolute top-[25%] left-[55%] h-1.5 w-1.5 rounded-full bg-white text-white neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
       </div>
 
       <section className="mx-auto max-w-6xl px-6 py-16">
