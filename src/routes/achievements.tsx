@@ -1,12 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Award, Shield, Star } from "lucide-react";
+import { Award, Shield, Star, Trophy, GraduationCap, Github } from "lucide-react";
 import cap from "@/assets/heroes/cap.jpg.asset.json";
 
 export const Route = createFileRoute("/achievements")({
   head: () => ({
     meta: [
       { title: "Achievements — Stuti Mohapatra" },
-      { name: "description", content: "SheCodex and Annata Chakra — recognitions and highlights." },
+      { name: "description", content: "2nd place at Anant Chakra Agentic AI Hackathon and SheCodex Coding Challenge, plus certifications and open-source activity." },
+      { property: "og:title", content: "Achievements — Stuti Mohapatra" },
+      { property: "og:description", content: "Hackathon podiums, certifications and developer milestones." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Achievements,
@@ -14,16 +18,43 @@ export const Route = createFileRoute("/achievements")({
 
 const items = [
   {
-    title: "SheCodex",
-    tag: "Women in Tech",
-    body: "Recognized participant in SheCodex — a community-driven initiative championing women in technology. Contributed to collaborative builds, learning circles, and cross-team engineering challenges.",
+    icon: Trophy,
+    title: "Anant Chakra Agentic AI Hackathon",
+    tag: "2nd Place",
+    body: "Runner-up at the Anant Chakra Agentic AI Hackathon — designed and shipped an agentic AI solution under time pressure, from problem framing to a working demo.",
   },
   {
-    title: "Annata Chakra",
-    tag: "Innovation & Impact",
-    body: "Featured contributor to Annata Chakra — a program spotlighting purposeful, real-world technology projects with community impact. Delivered on-the-ground solutions with cross-functional teamwork.",
+    icon: Trophy,
+    title: "SheCodex Coding Challenge",
+    tag: "2nd Place",
+    body: "Secured 2nd place in the SheCodex Coding Challenge, a women-in-tech competition testing problem solving, DSA fundamentals and clean implementation.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Front-End Web Development Certification",
+    tag: "Certified",
+    body: "Completed a Front-End Web Development certification covering semantic HTML, modern CSS, responsive layouts and JavaScript-driven interfaces.",
+  },
+  {
+    icon: Github,
+    title: "Active GitHub Developer",
+    tag: "Open Source",
+    body: "Consistently shipping and maintaining public repositories — projects like MoodMe.Up, Drive.Check.Go and Code Submission Hub live in the open.",
   },
 ];
+
+const experience = {
+  role: "Summer Internship",
+  org: "Paradip Port Authority",
+  dept: "Electrical & Mechanical Department",
+  period: "22 June — 21 July 2026",
+  points: [
+    "Successfully completed the summer internship programme",
+    "Worked directly under the IT Manager",
+    "Assisted project execution carried out under Tech Mahindra",
+    "Appreciated for sincerity and diligence",
+  ],
+};
 
 function Achievements() {
   return (
@@ -42,7 +73,6 @@ function Achievements() {
         <div className="absolute top-[78%] right-[16%] h-3 w-3 rounded-full border-2 border-red-500 text-red-500 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
         <div className="absolute top-[48%] right-[42%] h-1.5 w-1.5 rounded-full bg-blue-300 text-blue-300 neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
       </div>
-
 
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="text-center mb-14">
@@ -71,9 +101,9 @@ function Achievements() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {items.map(it => (
-            <article key={it.title} className="group relative rounded-xl border border-border bg-card/70 p-6 backdrop-blur transition hover:border-hero hover:hero-glow">
+            <article key={it.title} className="group relative rounded-xl border border-border bg-card/70 p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-hero hover:hero-glow">
               <div className="flex items-start justify-between mb-3">
-                <Award className="h-8 w-8 text-hero" />
+                <it.icon className="h-8 w-8 text-hero" />
                 <span className="rounded-full border border-hero/40 bg-hero/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-hero">
                   {it.tag}
                 </span>
@@ -82,6 +112,33 @@ function Achievements() {
               <p className="mt-3 text-muted-foreground">{it.body}</p>
             </article>
           ))}
+        </div>
+
+        {/* Experience timeline */}
+        <div className="mt-16">
+          <h2 className="font-display text-3xl font-black mb-6 flex items-center gap-3">
+            <Award className="h-7 w-7 text-hero" /> Experience
+          </h2>
+          <div className="relative rounded-xl border border-border bg-card/70 p-6 backdrop-blur">
+            <span className="absolute left-0 top-6 bottom-6 w-1 rounded-full bg-hero" />
+            <div className="pl-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="font-display text-xl font-bold">
+                  {experience.role} — <span className="text-hero">{experience.org}</span>
+                </h3>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">{experience.period}</span>
+              </div>
+              <p className="mt-1 text-sm text-muted-foreground">{experience.dept}</p>
+              <ul className="mt-4 space-y-2 text-sm text-foreground/85">
+                {experience.points.map(p => (
+                  <li key={p} className="flex gap-2">
+                    <span className="text-hero">▸</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="mt-10 text-center">

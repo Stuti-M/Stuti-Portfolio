@@ -1,18 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MessageSquare } from "lucide-react";
 import ironman from "@/assets/heroes/ironman.jpg.asset.json";
 import ironmanBlueprint from "@/assets/heroes/ironman-blueprint.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Stuti Mohapatra — Home" },
-      { name: "description", content: "Web Developer & AI/ML Enthusiast. Python, Java, HTML/CSS. Building real-world tech." },
+      { title: "Stuti Mohapatra — CSE Student, Web Developer & AI Enthusiast" },
+      { name: "description", content: "Stuti Mohapatra — Computer Science Engineering student. Web Developer, AI Enthusiast and Problem Solver building solutions that solve real problems." },
+      { property: "og:title", content: "Stuti Mohapatra — Web Developer & AI Enthusiast" },
+      { property: "og:description", content: "CSE student building AI-powered and real-world web products." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
 });
+
+const socials = [
+  { icon: Github, href: "https://github.com/Stuti-M", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/stuti-mohapatra-180713392", label: "LinkedIn" },
+  { icon: MessageSquare, href: "https://discord.com/users/stuti_k_73", label: "Discord" },
+  { icon: Mail, href: "mailto:mstuti.official@gmail.com", label: "Gmail" },
+];
 
 function Home() {
   return (
@@ -31,8 +42,11 @@ function Home() {
         <div className="absolute top-[30%] right-[10%] h-4 w-4 rounded-full border-2 border-cyan-300 text-cyan-300 neon-float neon-pulse" />
         <div className="absolute top-[55%] right-[18%] h-2 w-2 rounded-full bg-red-500 text-red-500 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
         <div className="absolute top-[85%] left-[45%] h-2.5 w-2.5 rounded-full bg-cyan-200 text-cyan-200 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
+        {/* Floating code snippets */}
+        <div className="absolute top-[24%] left-[4%] font-mono text-xs text-cyan-300/60 neon-float-slow">{"const build = () => impact;"}</div>
+        <div className="absolute top-[60%] right-[6%] font-mono text-xs text-secondary/60 neon-float" style={{ animationDelay: "-4s" }}>{"if (problem) solve();"}</div>
+        <div className="absolute bottom-[8%] left-[30%] font-mono text-xs text-red-400/50 neon-float-slow" style={{ animationDelay: "-2s" }}>{"model.fit(ideas, reality)"}</div>
       </div>
-
 
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="grid md:grid-cols-[1fr_auto] items-center gap-12">
@@ -41,34 +55,44 @@ function Home() {
               Stark Industries × Portfolio Protocol
             </p>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95]">
-              I am <span className="text-hero">STUTI</span>
+              <span className="text-hero">STUTI</span>
               <br />
               <span className="text-secondary">MOHAPATRA</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Web Developer & AI/ML Enthusiast
+              Computer Science Engineering Student
             </p>
             <p className="mt-2 max-w-xl text-base text-foreground/80">
-              <span className="text-hero font-semibold">Python</span> •{" "}
-              <span className="text-hero font-semibold">Java</span> •{" "}
-              <span className="text-hero font-semibold">HTML/CSS</span>
-              <span className="mx-2 text-muted-foreground">|</span>
-              Building Real-World Tech.
+              <span className="text-hero font-semibold">Web Developer</span> •{" "}
+              <span className="text-hero font-semibold">AI Enthusiast</span> •{" "}
+              <span className="text-hero font-semibold">Problem Solver</span>
             </p>
+            <blockquote className="mt-6 max-w-xl border-l-2 border-hero pl-4 font-display text-lg italic text-foreground/90">
+              "I don't just learn technology. I build solutions that solve real problems."
+            </blockquote>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/projects" className="rounded-md bg-hero px-6 py-3 font-display text-sm font-bold tracking-wider uppercase text-hero-foreground hero-glow transition hover:scale-105">
-                Suit Up →
+                View Projects →
               </Link>
               <Link to="/contact" className="rounded-md border-2 border-hero px-6 py-3 font-display text-sm font-bold tracking-wider uppercase text-hero transition hover:bg-hero hover:text-hero-foreground">
-                Hail Friday
+                Get In Touch
               </Link>
             </div>
 
             <div className="mt-8 flex gap-4">
-              <a href="https://github.com/Stuti-M" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-hero transition"><Github /></a>
-              <a href="https://www.linkedin.com/in/stuti-mohapatra-180713392" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-hero transition"><Linkedin /></a>
-              <a href="mailto:mstuti.official@gmail.com" className="text-muted-foreground hover:text-hero transition"><Mail /></a>
+              {socials.map(s => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
+                  className="text-muted-foreground transition hover:-translate-y-0.5 hover:text-hero"
+                >
+                  <s.icon />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -98,7 +122,7 @@ function Home() {
             { k: "Degree", v: "B.Tech CSE" },
             { k: "Class of", v: "2029" },
           ].map(s => (
-            <div key={s.k} className="rounded-lg border border-border bg-card/60 p-4 backdrop-blur">
+            <div key={s.k} className="rounded-lg border border-border bg-card/60 p-4 backdrop-blur transition hover:-translate-y-1 hover:border-hero">
               <p className="text-xs uppercase tracking-widest text-muted-foreground">{s.k}</p>
               <p className="mt-1 font-display text-xl font-bold text-hero">{s.v}</p>
             </div>
