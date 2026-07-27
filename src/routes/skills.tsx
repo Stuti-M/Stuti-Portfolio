@@ -6,17 +6,21 @@ export const Route = createFileRoute("/skills")({
   head: () => ({
     meta: [
       { title: "Skills — Stuti Mohapatra" },
-      { name: "description", content: "Languages, frameworks and tools." },
+      { name: "description", content: "Languages, frameworks, tools and concepts — Python, Java, React, TailwindCSS, Node.js, Git, n8n, Groq LLM, DSA and AI workflows." },
+      { property: "og:title", content: "Skills — Stuti Mohapatra" },
+      { property: "og:description", content: "Languages, frameworks, tools and concepts behind Stuti Mohapatra's builds." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Skills,
 });
 
-const groups = [
-  { title: "Languages",  items: [["Python", 85], ["Java", 78], ["JavaScript", 72], ["C", 65]] as [string, number][] },
-  { title: "Web",        items: [["HTML/CSS", 88], ["React", 75], ["TanStack", 65], ["Tailwind", 82]] as [string, number][] },
-  { title: "AI / ML",    items: [["NumPy / Pandas", 78], ["Scikit-learn", 72], ["TensorFlow", 60], ["Prompt Engineering", 80]] as [string, number][] },
-  { title: "Tools",      items: [["Git / GitHub", 85], ["VS Code", 90], ["Linux CLI", 70], ["Figma", 65]] as [string, number][] },
+const groups: { title: string; items: string[] }[] = [
+  { title: "Languages", items: ["Python", "Java", "HTML", "CSS", "JavaScript"] },
+  { title: "Frameworks", items: ["React", "TailwindCSS", "Node.js"] },
+  { title: "Tools", items: ["Git", "GitHub", "VS Code", "n8n", "Groq LLM", "Figma"] },
+  { title: "Concepts", items: ["DSA", "Responsive Design", "REST APIs", "AI Workflows"] },
 ];
 
 function Skills() {
@@ -44,23 +48,23 @@ function Skills() {
           <h1 className="mt-3 font-display text-5xl md:text-6xl font-black">
             The <span className="text-hero">Toolkit</span>
           </h1>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            No boring progress bars — just the stack I actually build with, day in and day out.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {groups.map(g => (
-            <div key={g.title} className="rounded-xl border border-border bg-card/70 p-6 backdrop-blur">
+            <div key={g.title} className="rounded-xl border border-border bg-card/70 p-6 backdrop-blur transition hover:border-hero">
               <h2 className="font-display text-xl font-bold mb-4">{g.title}</h2>
-              <div className="space-y-3">
-                {g.items.map(([name, val]) => (
-                  <div key={name}>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="font-semibold">{name}</span>
-                      <span className="text-muted-foreground tabular-nums">{val}%</span>
-                    </div>
-                    <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-                      <div className="h-full rounded-full bg-hero transition-all duration-1000" style={{ width: `${val}%` }} />
-                    </div>
-                  </div>
+              <div className="flex flex-wrap gap-2.5">
+                {g.items.map(name => (
+                  <span
+                    key={name}
+                    className="rounded-full border border-border bg-background/60 px-4 py-2 text-sm font-semibold transition duration-200 hover:-translate-y-0.5 hover:border-hero hover:text-hero hover:hero-glow"
+                  >
+                    {name}
+                  </span>
                 ))}
               </div>
             </div>
