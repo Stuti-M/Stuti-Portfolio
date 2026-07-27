@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LeetCodeProgress } from "../components/LeetCodeProgress";
-import { GraduationCap, Linkedin, Zap } from "lucide-react";
+import { GraduationCap, Linkedin, Zap, Compass } from "lucide-react";
 import thorNeon from "@/assets/heroes/thor-neon.jpg.asset.json";
 import thorStorm from "@/assets/heroes/thor-storm.jpg.asset.json";
 
@@ -8,11 +8,36 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Stuti Mohapatra" },
-      { name: "description", content: "B.Tech CSE @ SOA University '29. LeetCode progress and academic journey." },
+      { name: "description", content: "CSE student at SOA University (2025–2029), exploring full stack development, machine learning, AI agents, cloud and open source." },
+      { property: "og:title", content: "About — Stuti Mohapatra" },
+      { property: "og:description", content: "Education timeline, current explorations and live LeetCode progress." },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,
 });
+
+const exploring = [
+  "Full Stack Development",
+  "Machine Learning",
+  "AI Agents",
+  "Cloud Computing",
+  "Open Source",
+];
+
+const education = [
+  {
+    school: "SOA University",
+    detail: "Bachelor of Technology — Computer Science Engineering",
+    period: "2025 – 2029",
+  },
+  {
+    school: "DAV Public School",
+    detail: "Science",
+    period: "2023 – 2025",
+  },
+];
 
 function About() {
   return (
@@ -42,32 +67,36 @@ function About() {
             Wielder of <span className="text-hero">Code</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            "Whosoever holds this keyboard, if they be worthy, shall possess the power of Stuti."
+            Hello! I'm Stuti Mohapatra, a Computer Science Engineering student passionate about web
+            development, artificial intelligence and building impactful real-world applications. I enjoy
+            turning ideas into products that solve genuine problems — from AI-powered apps to
+            government-focused digital solutions.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
+          <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur transition hover:border-hero">
             <div className="flex items-center gap-3 mb-3">
-              <GraduationCap className="h-6 w-6 text-hero" />
-              <h2 className="font-display text-xl font-bold">Academics</h2>
+              <Compass className="h-6 w-6 text-hero" />
+              <h2 className="font-display text-xl font-bold">Currently Exploring</h2>
             </div>
-            <p className="text-2xl font-display font-bold">B.Tech in Computer Science</p>
-            <p className="text-hero font-semibold">SOA University — Class of 2029</p>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Diving deep into algorithms, systems, and the ever-evolving realm of AI/ML — forging the mind
-              through equal parts theory and craft.
-            </p>
+            <ul className="space-y-2">
+              {exploring.map(e => (
+                <li key={e} className="flex items-center gap-2 text-foreground/90">
+                  <span className="text-hero font-bold">✓</span> {e}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
+          <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur transition hover:border-hero">
             <div className="flex items-center gap-3 mb-3">
               <Linkedin className="h-6 w-6 text-hero" />
               <h2 className="font-display text-xl font-bold">Professional</h2>
             </div>
             <p className="text-foreground/90">
-              Aspiring Web Developer & AI/ML Enthusiast, actively building real-world projects
-              and contributing to student tech communities.
+              Web developer and AI enthusiast shipping real products — MoodMe.Up, Drive.Check.Go and
+              Code Submission Hub — alongside hackathon wins and an industry internship at Paradip Port Authority.
             </p>
             <a
               href="https://www.linkedin.com/in/stuti-mohapatra-180713392"
@@ -79,6 +108,26 @@ function About() {
           </div>
         </div>
 
+        {/* Education timeline */}
+        <div className="mb-10 rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
+          <div className="flex items-center gap-3 mb-6">
+            <GraduationCap className="h-6 w-6 text-hero" />
+            <h2 className="font-display text-xl font-bold">Education</h2>
+          </div>
+          <ol className="relative space-y-8 border-l-2 border-hero/40 pl-6">
+            {education.map(ed => (
+              <li key={ed.school} className="relative">
+                <span className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-hero ring-4 ring-background" />
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-display text-lg font-bold">{ed.school}</h3>
+                  <span className="text-xs uppercase tracking-widest text-muted-foreground">{ed.period}</span>
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">{ed.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
         <LeetCodeProgress username="Stuti_Mohapatra" />
 
         <div className="mt-10 rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
@@ -86,7 +135,7 @@ function About() {
           <p className="text-muted-foreground">
             From first lines of Python to full-stack builds and AI experiments — I approach every project
             like Mjolnir approaches battle: with focus, worthiness, and a bit of thunder. Currently exploring
-            the intersection of AI/ML and practical web experiences.
+            the intersection of AI agents and practical web experiences.
           </p>
         </div>
       </section>
