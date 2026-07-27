@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Mail, Phone, MessageSquare, Target } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, MessageSquare, Target } from "lucide-react";
 import hawkeyeCity from "@/assets/heroes/hawkeye-city.jpg.asset.json";
 import hawkeyeTarget from "@/assets/heroes/hawkeye-target.jpg.asset.json";
 
@@ -7,7 +7,11 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Stuti Mohapatra" },
-      { name: "description", content: "Reach out via phone, email, GitHub or Discord." },
+      { name: "description", content: "Reach Stuti Mohapatra by phone, email, GitHub, LinkedIn or Discord." },
+      { property: "og:title", content: "Contact — Stuti Mohapatra" },
+      { property: "og:description", content: "Phone, email, GitHub, LinkedIn and Discord — pick a channel." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,
@@ -17,8 +21,10 @@ const contacts = [
   { icon: Phone,   label: "Phone",   value: "+91 78479 71447",             href: "tel:+917847971447" },
   { icon: Mail,    label: "Email",   value: "mstuti.official@gmail.com",   href: "mailto:mstuti.official@gmail.com" },
   { icon: Github,  label: "GitHub",  value: "github.com/Stuti-M",          href: "https://github.com/Stuti-M" },
+  { icon: Linkedin, label: "LinkedIn", value: "stuti-mohapatra-180713392", href: "https://www.linkedin.com/in/stuti-mohapatra-180713392" },
   { icon: MessageSquare, label: "Discord", value: "stuti_k_73",            href: "https://discord.com/users/stuti_k_73" },
 ];
+
 
 function Contact() {
   return (
