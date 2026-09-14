@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "../components/Navbar";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { CustomCursor } from "../components/CustomCursor";
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
@@ -111,6 +112,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        <CustomCursor />
         <div className="min-h-screen flex flex-col bg-background text-foreground">
           <Navbar />
           <main className="flex-1">

@@ -99,7 +99,7 @@
   --hero-glow: oklch(0.65 0.22 245 / 0.45);
 }
 
-/* 1. 🦾 IRON MAN (Building): Hot-Rod Red, Arc Gold & Cyan Pulse */
+/* 1. 🦾 IRON MAN (Work / Projects): Stark Hot-Rod Red, Arc Gold & Energy Cyan */
 .theme-ironman {
   --primary: oklch(0.56 0.24 25);
   --primary-foreground: oklch(0.99 0 0);
@@ -107,7 +107,7 @@
   --secondary-foreground: oklch(0.15 0.02 260);
   --accent: oklch(0.78 0.18 78);
   --accent-foreground: oklch(0.15 0.02 260);
-  --hero-glow: oklch(0.56 0.24 25 / 0.35);
+  --hero-glow: oklch(0.56 0.24 25 / 0.38);
   --hero-particle: #F59E0B;
   --hero-hud: oklch(0.85 0.18 200);
 }
@@ -116,10 +116,10 @@
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.82 0.18 78);
   --secondary-foreground: oklch(0.12 0.02 260);
-  --hero-glow: oklch(0.65 0.24 25 / 0.45);
+  --hero-glow: oklch(0.65 0.24 25 / 0.48);
 }
 
-/* 2. 🕷️ SPIDER-MAN (Work / Projects): Web Crimson & Electric Sky Blue */
+/* 2. 🕷️ SPIDER-MAN (Building / Labs): Web Crimson & Electric Sky Blue */
 .theme-spiderman {
   --primary: oklch(0.58 0.24 24);
   --primary-foreground: oklch(0.99 0 0);
@@ -139,27 +139,27 @@
   --hero-glow: oklch(0.66 0.24 24 / 0.45);
 }
 
-/* 3. ⚡ THOR (About / Journey): Asgardian Storm Steel Grey, Uru Metallic Silver & Lightning */
+/* 3. ⚡ THOR (About / Journey): Asgardian Storm Slate, Steel & Lightning */
 .theme-thor {
-  --primary: oklch(0.58 0.05 260); /* Metallic Storm Slate Grey */
+  --primary: oklch(0.58 0.14 250);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.72 0.08 245); /* Storm Silver-Blue */
+  --secondary: oklch(0.72 0.08 245);
   --secondary-foreground: oklch(0.12 0.02 260);
-  --accent: oklch(0.80 0.03 260); /* Uru Metallic Silver */
+  --accent: oklch(0.80 0.05 260);
   --accent-foreground: oklch(0.12 0.02 260);
-  --hero-glow: oklch(0.65 0.06 255 / 0.40);
+  --hero-glow: oklch(0.65 0.14 250 / 0.40);
   --hero-particle: #94A3B8;
   --hero-hud: oklch(0.75 0.04 260);
 }
 .dark.theme-thor, .theme-thor.dark, .theme-thor .dark {
-  --primary: oklch(0.70 0.05 255); /* Bright Asgardian Steel Grey */
-  --primary-foreground: oklch(0.08 0.02 260);
-  --secondary: oklch(0.78 0.08 245); /* Electric Lightning Silver */
+  --primary: oklch(0.68 0.16 250);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.78 0.08 245);
   --secondary-foreground: oklch(0.08 0.02 260);
-  --hero-glow: oklch(0.70 0.05 255 / 0.50);
+  --hero-glow: oklch(0.68 0.16 250 / 0.50);
 }
 
-/* 4. 🛡️ CAPTAIN AMERICA (Achievements): Strategic Shield Blue, Tactical Crimson & White */
+/* 4. 🛡️ CAPTAIN AMERICA (Achievements): Strategic Shield Navy Blue, Crimson & Silver White */
 .theme-cap {
   --primary: oklch(0.48 0.20 250);
   --primary-foreground: oklch(0.99 0 0);
@@ -179,7 +179,7 @@
   --hero-glow: oklch(0.64 0.20 250 / 0.45);
 }
 
-/* 5. 💚 HULK (Experience): Gamma Emerald & Radioactive Purple */
+/* 5. 💚 HULK (Experience): Gamma Emerald & Radioactive Violet */
 .theme-hulk {
   --primary: oklch(0.60 0.22 145);
   --primary-foreground: oklch(0.10 0.02 260);
@@ -234,7 +234,7 @@
 .dark.theme-widow, .theme-widow.dark, .theme-widow .dark {
   --primary: oklch(0.60 0.24 22);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.30 0.02 260);
+  --secondary: oklch(0.18 0.02 260);
   --secondary-foreground: oklch(0.99 0 0);
   --hero-glow: oklch(0.60 0.24 22 / 0.45);
 }
@@ -285,6 +285,14 @@
     linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 7%, transparent) 1px, transparent 1px);
 }
 
+/* Stark HUD Technical Grid */
+.theme-ironman .bg-grid-subtle {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 8%, transparent) 1px, transparent 1px);
+}
+
 /* Hawkeye Precision Target Grid */
 .theme-hawkeye .bg-grid-subtle {
   background-size: 36px 36px;
@@ -301,19 +309,29 @@
     linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 6%, transparent) 1px, transparent 1px);
 }
 
-/* Thor Asgardian Storm Steel & Uru Grey Grid */
+/* Thor Asgardian Storm Slate Grid */
 .theme-thor .bg-grid-subtle {
   background-size: 36px 36px;
   background-image: 
     linear-gradient(to right, color-mix(in oklch, var(--primary) 7%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklch, var(--accent) 7%, transparent) 1px, transparent 1px);
+    linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 7%, transparent) 1px, transparent 1px);
 }
 
-/* Cinematic Page Transition Animations */
-@keyframes pageEnter {
+/* Black Widow Obsidian Tactical Grid */
+.theme-widow .bg-grid-subtle {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--primary) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--primary) 5%, transparent) 1px, transparent 1px);
+}
+
+/* ========================================================
+   CINEMATIC PAGE TRANSITIONS (300-600ms purposeful sweeps)
+   ======================================================== */
+@keyframes pageEnterBase {
   0% {
     opacity: 0;
-    transform: translateY(12px) scale(0.995);
+    transform: translateY(10px) scale(0.995);
   }
   100% {
     opacity: 1;
@@ -322,7 +340,109 @@
 }
 
 .page-enter {
-  animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: pageEnterBase 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stark HUD Arc Reactor Sweep */
+@keyframes ironmanSweep {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+    filter: brightness(1.25) contrast(1.1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1) contrast(1);
+  }
+}
+.theme-ironman.page-enter {
+  animation: ironmanSweep 0.42s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+/* Spider-Man Kinetic Web Sweep */
+@keyframes spidermanSweep {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.theme-spiderman.page-enter {
+  animation: spidermanSweep 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Hulk Gamma Impact Pulse */
+@keyframes hulkImpact {
+  0% {
+    opacity: 0;
+    transform: scale(0.98) translateY(6px);
+  }
+  60% {
+    transform: scale(1.003) translateY(-1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.theme-hulk.page-enter {
+  animation: hulkImpact 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Hawkeye Precision Lock */
+@keyframes hawkeyeLock {
+  0% {
+    opacity: 0;
+    transform: scale(0.99) translateX(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+.theme-hawkeye.page-enter {
+  animation: hawkeyeLock 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Thor Thunder Flash */
+@keyframes thorThunder {
+  0% {
+    opacity: 0;
+    filter: brightness(1.3);
+  }
+  40% {
+    opacity: 0.9;
+    filter: brightness(1.15);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+.theme-thor.page-enter {
+  animation: thorThunder 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Black Widow Crimson Tactical Scan */
+@keyframes widowScan {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.theme-widow.page-enter {
+  animation: widowScan 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* Engineering & Marvel Chips */
@@ -344,6 +464,26 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
   background-color: color-mix(in oklch, var(--color-primary) 10%, transparent);
+}
+
+/* Technical HUD Blueprint borders & scanlines */
+.hud-card {
+  position: relative;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  transition: all 0.25s ease;
+}
+
+.hud-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0.6;
 }
 
 /* Marvel Pulse & Glow Utilities */
@@ -405,6 +545,13 @@
 @keyframes neonPulse {
   0%, 100% { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 14px currentColor); opacity: 0.85; }
   50% { filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 30px currentColor); opacity: 1; }
+}
+
+/* Custom Cursor Visibility */
+@media (pointer: coarse) {
+  .custom-cursor-container {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
