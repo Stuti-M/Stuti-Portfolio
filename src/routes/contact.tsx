@@ -1,94 +1,172 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Github, Linkedin, Mail, Phone, MessageSquare, Target } from "lucide-react";
-import hawkeyeCity from "@/assets/heroes/hawkeye-city.jpg.asset.json";
-import hawkeyeTarget from "@/assets/heroes/hawkeye-target.jpg.asset.json";
+import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Mail, Phone, Github, Linkedin, MessageSquare, Code2, Copy, Check, ArrowRight, Send } from "lucide-react";
+import { BlackWidowIcon } from "../components/MarvelIcons";
+import { MarvelFloatingParticles } from "../components/MarvelFloatingParticles";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Stuti Mohapatra" },
-      { name: "description", content: "Reach Stuti Mohapatra by phone, email, GitHub, LinkedIn or Discord." },
-      { property: "og:title", content: "Contact — Stuti Mohapatra" },
-      { property: "og:description", content: "Phone, email, GitHub, LinkedIn and Discord — pick a channel." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { title: "Contact | Black Widow Protocol — Stuti Mohapatra" },
+      {
+        name: "description",
+        content: "Direct communications channels for Stuti Mohapatra (email, phone, LinkedIn, GitHub, Discord).",
+      },
     ],
   }),
-  component: Contact,
+  component: ContactPage,
 });
 
-const contacts = [
-  { icon: Phone,   label: "Phone",   value: "+91 78479 71447",             href: "tel:+917847971447" },
-  { icon: Mail,    label: "Email",   value: "mstuti.official@gmail.com",   href: "mailto:mstuti.official@gmail.com" },
-  { icon: Github,  label: "GitHub",  value: "github.com/Stuti-M",          href: "https://github.com/Stuti-M" },
-  { icon: Linkedin, label: "LinkedIn", value: "stuti-mohapatra-180713392", href: "https://www.linkedin.com/in/stuti-mohapatra-180713392" },
-  { icon: MessageSquare, label: "Discord", value: "stuti_k_73",            href: "https://discord.com/users/stuti_k_73" },
-];
+function ContactPage() {
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
+  const copyEmail = () => {
+    navigator.clipboard.writeText("mstuti.official@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
 
-function Contact() {
+  const contacts = [
+    {
+      icon: Mail,
+      label: "Direct Email",
+      value: "mstuti.official@gmail.com",
+      href: "mailto:mstuti.official@gmail.com",
+      action: "copy",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      value: "stuti-mohapatra",
+      href: "https://www.linkedin.com/in/stuti-mohapatra-180713392",
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      value: "github.com/Stuti-M",
+      href: "https://github.com/Stuti-M",
+    },
+    {
+      icon: Code2,
+      label: "LeetCode",
+      value: "@Stuti_Mohapatra",
+      href: "https://leetcode.com/u/Stuti_Mohapatra/",
+    },
+    {
+      icon: MessageSquare,
+      label: "Discord",
+      value: "stuti_k_73",
+      href: "https://discord.com/users/stuti_k_73",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+91 78479 71447",
+      href: "tel:+917847971447",
+    },
+  ];
+
   return (
-    <div className="theme-hawkeye cursor-hawkeye min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Hawkeye backdrop — Ronin cityscape + target rings, purple/magenta */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={hawkeyeCity.url} alt="" className="absolute inset-0 h-full w-full object-cover object-bottom opacity-55" />
-        <img src={hawkeyeTarget.url} alt="" className="absolute inset-0 h-full w-full object-contain object-right opacity-35 mix-blend-screen" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.4_0.15_300/0.55),transparent_55%),radial-gradient(ellipse_at_bottom_left,oklch(0.6_0.22_340/0.4),transparent_55%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/60 to-background" />
-        {/* Floating arrows & purple sparks */}
-        <div className="absolute top-[18%] left-[10%] h-3 w-3 rounded-full bg-purple-400 text-purple-400 neon-float neon-pulse" />
-        <div className="absolute top-[45%] left-[6%] h-2 w-2 rounded-full bg-fuchsia-400 text-fuchsia-400 neon-float-slow neon-pulse" style={{ animationDelay: "-3s" }} />
-        <div className="absolute top-[30%] right-[8%] h-4 w-4 rounded-full border-2 border-purple-400 text-purple-400 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
-        <div className="absolute top-[72%] left-[40%] h-2 w-2 rounded-full bg-yellow-300 text-yellow-300 neon-float-slow neon-pulse" style={{ animationDelay: "-4s" }} />
-        <div className="absolute top-[62%] right-[22%] h-2.5 w-2.5 rounded-full bg-violet-500 text-violet-500 neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
-      </div>
-      {/* target rings background */}
-      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-[0.08]">
-        {[600, 480, 360, 240, 120].map(s => (
-          <div key={s} className="absolute rounded-full border-2 border-hero" style={{ width: s, height: s }} />
-        ))}
-        <div className="absolute h-2 w-2 rounded-full bg-hero" />
-      </div>
+    <div className="theme-widow page-enter min-h-screen py-24 px-4 sm:px-6 bg-grid-subtle relative overflow-hidden">
+      {/* ⧗ Black Widow Glowing Moving Belt Hourglass Particles */}
+      <MarvelFloatingParticles theme="widow" />
 
+      {/* Background Atmosphere */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-20 left-1/3 h-[500px] w-[800px] rounded-full bg-primary/15 blur-[140px] neon-drift"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-1/4 right-10 h-72 w-72 rounded-full bg-red-600/15 blur-[120px] neon-pulse"
+      />
 
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <div className="text-center mb-12">
-          <p className="font-display text-sm tracking-[0.35em] text-hero uppercase flex items-center justify-center gap-2">
-            <Target className="h-4 w-4" /> Never Misses
-          </p>
-          <h1 className="mt-3 font-display text-5xl md:text-6xl font-black">
-            Take the <span className="text-hero">Shot</span>
+      <div className="relative mx-auto max-w-4xl text-center">
+        {/* Header with Official Black Widow Hourglass Belt Buckle Emblem */}
+        <div className="mb-10">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <BlackWidowIcon className="h-6 w-6 drop-shadow-[0_0_12px_#DC2626]" />
+            <span className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+              RED ROOM PROTOCOL // SECURE CHANNELS
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
+            HAVE A PROBLEM WORTH BUILDING?
           </h1>
-          <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
-            Aim true. Pick your channel and hit send — I don't miss replies.
+          <p className="text-2xl sm:text-3xl font-bold text-primary mt-2">
+            Let's talk.
+          </p>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm sm:text-base">
+            Whether it's an AI/ML engineering role, software development opportunity, hackathon collaboration, or technical inquiry — my inbox is open.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4">
-          {contacts.map(c => (
-            <a
+        {/* Contact Grid */}
+        <div className="grid sm:grid-cols-2 gap-4 text-left mt-10">
+          {contacts.map((c) => (
+            <div
               key={c.label}
-              href={c.href}
-              target={c.href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
-              className="group relative flex items-center gap-4 rounded-xl border border-border bg-card/70 p-5 backdrop-blur transition hover:border-hero hover:hero-glow"
+              className="p-5 rounded-xl border border-border bg-card flex items-center justify-between transition hover:border-primary hover:shadow-xs"
             >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-hero bg-hero/10 text-hero transition group-hover:bg-hero group-hover:text-hero-foreground">
-                <c.icon className="h-6 w-6" />
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <c.icon className="h-5 w-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-mono text-[10px] uppercase text-muted-foreground">{c.label}</p>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noreferrer"
+                    className="font-bold text-foreground hover:text-primary transition truncate block text-sm mt-0.5"
+                  >
+                    {c.value}
+                  </a>
+                </div>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
-                <p className="mt-0.5 truncate font-display text-lg font-bold">{c.value}</p>
-              </div>
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 font-display text-hero opacity-0 transition group-hover:opacity-100">→</span>
-            </a>
+
+              {c.action === "copy" && (
+                <button
+                  onClick={copyEmail}
+                  className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition shrink-0 ml-2"
+                  title="Copy email address"
+                >
+                  {copiedEmail ? (
+                    <span className="flex items-center gap-1 text-xs text-emerald-500 font-mono font-semibold">
+                      <Check className="h-4 w-4" />
+                      <span>Copied</span>
+                    </span>
+                  ) : (
+                    <Copy className="h-4 w-4" />
+                  )}
+                </button>
+              )}
+            </div>
           ))}
         </div>
 
-        <p className="mt-12 text-center text-sm text-muted-foreground italic">
-          "The bow only misses when the archer forgets to breathe."
-        </p>
-      </section>
+        {/* Direct Email Action Button */}
+        <div className="mt-12">
+          <a
+            href="mailto:mstuti.official@gmail.com?subject=Engineering%20Opportunity%20/%20Inquiry%20-%20Stuti%20Mohapatra"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-sm transition hover:opacity-95 hover:scale-[1.02] hero-glow"
+          >
+            <span>Dispatch Secure Message</span>
+            <Send className="h-4 w-4" />
+          </a>
+        </div>
+
+        {/* Bottom Navigation */}
+        <div className="mt-16 flex items-center justify-between border-t border-border/70 pt-6">
+          <Link to="/about" className="text-xs font-semibold text-muted-foreground hover:text-primary transition">
+            ← View About & Journey ⚡
+          </Link>
+          <Link to="/" className="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+            <span>Return to SHIELD HQ 🛡️</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

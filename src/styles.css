@@ -8,7 +8,8 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -28,157 +29,356 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-hero: var(--hero);
-  --color-hero-foreground: var(--hero-foreground);
-  --font-display: "Orbitron", "Impact", sans-serif;
-  --font-sans: "Rajdhani", "Inter", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
+/* Base Light & Dark Theme Foundation */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(0.98 0.005 250);
-  --foreground: oklch(0.15 0.03 260);
+  --radius: 0.85rem;
+  --background: oklch(0.985 0.005 85);
+  --foreground: oklch(0.18 0.015 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.03 260);
+  --card-foreground: oklch(0.18 0.015 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.03 260);
-  --primary: oklch(0.55 0.22 25);        /* Iron Man red */
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.75 0.18 75);      /* Iron Man gold */
-  --secondary-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.94 0.01 250);
-  --muted-foreground: oklch(0.4 0.02 260);
-  --accent: oklch(0.55 0.22 25);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.88 0.015 250);
-  --input: oklch(0.9 0.015 250);
-  --ring: oklch(0.55 0.22 25);
-  --hero: oklch(0.55 0.22 25);
-  --hero-foreground: oklch(0.98 0 0);
-
-  /* Marvel character theme accents */
-  --ironman-red: oklch(0.52 0.22 25);
-  --ironman-gold: oklch(0.78 0.16 78);
-  --ironman-glow: oklch(0.85 0.18 200);
-  --thor-blue: oklch(0.55 0.2 240);
-  --thor-lightning: oklch(0.9 0.15 90);
-  --cap-blue: oklch(0.35 0.15 250);
-  --cap-red: oklch(0.5 0.2 20);
-  --cap-white: oklch(0.98 0 0);
-  --hawkeye-purple: oklch(0.4 0.15 300);
-  --hawkeye-mag: oklch(0.6 0.22 340);
-  --hulk-green: oklch(0.5 0.2 145);
-  --hulk-purple: oklch(0.35 0.15 300);
-  --widow-red: oklch(0.45 0.22 20);
-  --widow-black: oklch(0.15 0.01 260);
+  --popover-foreground: oklch(0.18 0.015 250);
+  
+  --primary: oklch(0.48 0.22 250);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.75 0.18 210);
+  --secondary-foreground: oklch(0.15 0.02 260);
+  --muted: oklch(0.95 0.006 85);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: oklch(0.75 0.18 210);
+  --accent-foreground: oklch(0.15 0.02 260);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.90 0.008 85);
+  --input: oklch(0.92 0.008 85);
+  --ring: var(--primary);
+  
+  --hero-glow: color-mix(in oklch, var(--primary) 35%, transparent);
+  --hero-particle: oklch(0.48 0.22 250);
 }
 
 .dark {
-  --background: oklch(0.11 0.02 260);
+  --background: oklch(0.11 0.018 260);
   --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.16 0.025 260);
+  --card: oklch(0.155 0.022 260);
   --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.16 0.025 260);
+  --popover: oklch(0.155 0.022 260);
   --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.65 0.22 25);
-  --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.78 0.18 78);
-  --secondary-foreground: oklch(0.1 0 0);
-  --muted: oklch(0.2 0.02 260);
-  --muted-foreground: oklch(0.7 0.02 260);
-  --accent: oklch(0.65 0.22 25);
-  --accent-foreground: oklch(0.1 0 0);
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.02 260);
-  --input: oklch(0.22 0.02 260);
-  --ring: oklch(0.65 0.22 25);
-  --hero: oklch(0.65 0.22 25);
-  --hero-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.19 0.02 260);
+  --muted-foreground: oklch(0.65 0.02 260);
+  --border: oklch(0.24 0.022 260);
+  --input: oklch(0.24 0.022 260);
 }
 
+/* ========================================================
+   MARVEL CHARACTER THEMES PER PAGE
+   ======================================================== */
+
+/* 0. 🛡️ S.H.I.E.L.D. HELICARRIER HQ (Homepage): Strategic Navy, Tactical Cyan & Eagle Gold */
+.theme-shield {
+  --primary: oklch(0.48 0.22 250);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.75 0.18 210);
+  --secondary-foreground: oklch(0.12 0.02 260);
+  --accent: oklch(0.78 0.18 78);
+  --accent-foreground: oklch(0.15 0.02 260);
+  --hero-glow: oklch(0.48 0.22 250 / 0.38);
+  --hero-particle: #0284C7;
+  --hero-hud: oklch(0.75 0.18 210);
+}
+.dark.theme-shield, .theme-shield.dark, .theme-shield .dark {
+  --primary: oklch(0.65 0.22 245);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.78 0.18 210);
+  --secondary-foreground: oklch(0.10 0.02 260);
+  --hero-glow: oklch(0.65 0.22 245 / 0.45);
+}
+
+/* 1. 🦾 IRON MAN (Building): Hot-Rod Red, Arc Gold & Cyan Pulse */
+.theme-ironman {
+  --primary: oklch(0.56 0.24 25);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.78 0.18 78);
+  --secondary-foreground: oklch(0.15 0.02 260);
+  --accent: oklch(0.78 0.18 78);
+  --accent-foreground: oklch(0.15 0.02 260);
+  --hero-glow: oklch(0.56 0.24 25 / 0.35);
+  --hero-particle: #F59E0B;
+  --hero-hud: oklch(0.85 0.18 200);
+}
+.dark.theme-ironman, .theme-ironman.dark, .theme-ironman .dark {
+  --primary: oklch(0.65 0.24 25);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.82 0.18 78);
+  --secondary-foreground: oklch(0.12 0.02 260);
+  --hero-glow: oklch(0.65 0.24 25 / 0.45);
+}
+
+/* 2. 🕷️ SPIDER-MAN (Work / Projects): Web Crimson & Electric Sky Blue */
+.theme-spiderman {
+  --primary: oklch(0.58 0.24 24);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.58 0.22 245);
+  --secondary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.58 0.22 245);
+  --accent-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.58 0.24 24 / 0.35);
+  --hero-particle: #0EA5E9;
+  --hero-hud: oklch(0.65 0.22 245);
+}
+.dark.theme-spiderman, .theme-spiderman.dark, .theme-spiderman .dark {
+  --primary: oklch(0.66 0.24 24);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.68 0.22 245);
+  --secondary-foreground: oklch(0.10 0.02 260);
+  --hero-glow: oklch(0.66 0.24 24 / 0.45);
+}
+
+/* 3. ⚡ THOR (About / Journey): Asgardian Storm Steel Grey, Uru Metallic Silver & Lightning */
+.theme-thor {
+  --primary: oklch(0.58 0.05 260); /* Metallic Storm Slate Grey */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.72 0.08 245); /* Storm Silver-Blue */
+  --secondary-foreground: oklch(0.12 0.02 260);
+  --accent: oklch(0.80 0.03 260); /* Uru Metallic Silver */
+  --accent-foreground: oklch(0.12 0.02 260);
+  --hero-glow: oklch(0.65 0.06 255 / 0.40);
+  --hero-particle: #94A3B8;
+  --hero-hud: oklch(0.75 0.04 260);
+}
+.dark.theme-thor, .theme-thor.dark, .theme-thor .dark {
+  --primary: oklch(0.70 0.05 255); /* Bright Asgardian Steel Grey */
+  --primary-foreground: oklch(0.08 0.02 260);
+  --secondary: oklch(0.78 0.08 245); /* Electric Lightning Silver */
+  --secondary-foreground: oklch(0.08 0.02 260);
+  --hero-glow: oklch(0.70 0.05 255 / 0.50);
+}
+
+/* 4. 🛡️ CAPTAIN AMERICA (Achievements): Strategic Shield Blue, Tactical Crimson & White */
+.theme-cap {
+  --primary: oklch(0.48 0.20 250);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.55 0.24 24);
+  --secondary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.55 0.24 24);
+  --accent-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.48 0.20 250 / 0.35);
+  --hero-particle: #DC2626;
+  --hero-hud: oklch(0.98 0 0);
+}
+.dark.theme-cap, .theme-cap.dark, .theme-cap .dark {
+  --primary: oklch(0.64 0.20 250);
+  --primary-foreground: oklch(0.10 0.02 260);
+  --secondary: oklch(0.65 0.24 24);
+  --secondary-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.64 0.20 250 / 0.45);
+}
+
+/* 5. 💚 HULK (Experience): Gamma Emerald & Radioactive Purple */
+.theme-hulk {
+  --primary: oklch(0.60 0.22 145);
+  --primary-foreground: oklch(0.10 0.02 260);
+  --secondary: oklch(0.50 0.20 300);
+  --secondary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.50 0.20 300);
+  --accent-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.60 0.22 145 / 0.35);
+  --hero-particle: #A855F7;
+  --hero-hud: oklch(0.70 0.22 145);
+}
+.dark.theme-hulk, .theme-hulk.dark, .theme-hulk .dark {
+  --primary: oklch(0.68 0.22 145);
+  --primary-foreground: oklch(0.10 0.02 260);
+  --secondary: oklch(0.65 0.20 300);
+  --secondary-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.68 0.22 145 / 0.45);
+}
+
+/* 6. 🏹 HAWKEYE (Skills / Toolbox): Ronin Purple & Precision Crimson */
+.theme-hawkeye {
+  --primary: oklch(0.52 0.24 300);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.55 0.24 20);
+  --secondary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.55 0.24 20);
+  --accent-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.52 0.24 300 / 0.35);
+  --hero-particle: #E11D48;
+  --hero-hud: oklch(0.65 0.22 340);
+}
+.dark.theme-hawkeye, .theme-hawkeye.dark, .theme-hawkeye .dark {
+  --primary: oklch(0.66 0.24 300);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.65 0.24 20);
+  --secondary-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.66 0.24 300 / 0.45);
+}
+
+/* 7. 🕷️ BLACK WIDOW (Contact): Obsidian Black & Tactical Crimson Glow */
+.theme-widow {
+  --primary: oklch(0.50 0.24 22);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.20 0.02 260);
+  --secondary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.50 0.24 22);
+  --accent-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.50 0.24 22 / 0.35);
+  --hero-particle: #EF4444;
+  --hero-hud: oklch(0.55 0.24 22);
+}
+.dark.theme-widow, .theme-widow.dark, .theme-widow .dark {
+  --primary: oklch(0.60 0.24 22);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.30 0.02 260);
+  --secondary-foreground: oklch(0.99 0 0);
+  --hero-glow: oklch(0.60 0.24 22 / 0.45);
+}
+
+/* Global typography & base styling */
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.02em; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
 }
 
-/* Marvel page themes */
-.theme-ironman {
-  --hero: var(--ironman-red);
-  --hero-foreground: var(--ironman-gold);
-}
-.theme-thor {
-  --hero: var(--thor-blue);
-  --hero-foreground: var(--thor-lightning);
-}
-.theme-cap {
-  --hero: var(--cap-blue);
-  --hero-foreground: var(--cap-white);
-}
-.theme-hawkeye {
-  --hero: var(--hawkeye-purple);
-  --hero-foreground: var(--hawkeye-mag);
-}
-.theme-hulk {
-  --hero: var(--hulk-green);
-  --hero-foreground: var(--hulk-purple);
-}
-.theme-widow {
-  --hero: var(--widow-red);
-  --hero-foreground: var(--cap-white);
+/* Subtle Technical Grid & Dot Patterns */
+.bg-grid-subtle {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--color-foreground) 4.5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--color-foreground) 4.5%, transparent) 1px, transparent 1px);
 }
 
-/* Marvel cursors (SVG data URIs) */
-.cursor-ironman, .cursor-ironman * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><defs><radialGradient id='g' cx='50%25' cy='50%25' r='50%25'><stop offset='0%25' stop-color='%23e0f7ff'/><stop offset='50%25' stop-color='%234fc3f7'/><stop offset='100%25' stop-color='%23004a80'/></radialGradient></defs><circle cx='20' cy='20' r='18' fill='%23c9a227' stroke='%23a30000' stroke-width='2'/><circle cx='20' cy='20' r='12' fill='url(%23g)'/><polygon points='20,10 24,20 20,30 16,20' fill='%23ffffff' opacity='0.85'/><polygon points='10,20 20,16 30,20 20,24' fill='%23ffffff' opacity='0.85'/></svg>") 20 20, auto;
-}
-.cursor-thor, .cursor-thor * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><rect x='8' y='4' width='24' height='16' rx='2' fill='%23555' stroke='%23222' stroke-width='2'/><rect x='11' y='7' width='18' height='10' fill='%23888'/><rect x='18' y='20' width='4' height='16' fill='%23a0522d' stroke='%23222' stroke-width='1'/><rect x='16' y='34' width='8' height='3' fill='%23b8860b'/></svg>") 20 20, auto;
-}
-.cursor-cap, .cursor-cap * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%23c1272d'/><circle cx='20' cy='20' r='14' fill='%23ffffff'/><circle cx='20' cy='20' r='10' fill='%23c1272d'/><circle cx='20' cy='20' r='6' fill='%231e3a8a'/><polygon points='20,15 21.2,18.5 25,18.5 22,20.8 23.2,24.5 20,22.3 16.8,24.5 18,20.8 15,18.5 18.8,18.5' fill='%23ffffff'/></svg>") 20 20, auto;
-}
-.cursor-hawkeye, .cursor-hawkeye * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='none' stroke='%237c3aed' stroke-width='2'/><circle cx='20' cy='20' r='12' fill='none' stroke='%23c026d3' stroke-width='1.5'/><circle cx='20' cy='20' r='6' fill='none' stroke='%237c3aed' stroke-width='1.5'/><circle cx='20' cy='20' r='2' fill='%23c026d3'/><line x1='2' y1='20' x2='10' y2='20' stroke='%237c3aed' stroke-width='2'/><line x1='30' y1='20' x2='38' y2='20' stroke='%237c3aed' stroke-width='2'/><line x1='20' y1='2' x2='20' y2='10' stroke='%237c3aed' stroke-width='2'/><line x1='20' y1='30' x2='20' y2='38' stroke='%237c3aed' stroke-width='2'/></svg>") 20 20, crosshair;
-}
-.cursor-hulk, .cursor-hulk * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M8 20 Q20 4 32 20 Q28 34 20 34 Q12 34 8 20 Z' fill='%235d9c3e' stroke='%232d4a1f' stroke-width='2'/><circle cx='15' cy='18' r='2' fill='%23fff'/><circle cx='25' cy='18' r='2' fill='%23fff'/></svg>") 20 20, auto;
-}
-.cursor-widow, .cursor-widow * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='14' fill='%23000'/><path d='M20 10 L14 20 L20 30 L26 20 Z' fill='%23c1272d'/><circle cx='20' cy='20' r='3' fill='%23000'/></svg>") 20 20, auto;
+.bg-dots-subtle {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, color-mix(in oklch, var(--color-foreground) 8%, transparent) 1px, transparent 1px);
 }
 
-@utility hero-glow {
-  box-shadow: 0 0 40px -10px var(--hero), 0 0 80px -30px var(--hero);
+/* Web grid overlay for Spider-Man */
+.theme-spiderman .bg-grid-subtle {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--primary) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 7%, transparent) 1px, transparent 1px);
 }
-@utility text-hero {
-  color: var(--hero);
+
+/* Hawkeye Precision Target Grid */
+.theme-hawkeye .bg-grid-subtle {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 6%, transparent) 1px, transparent 1px);
 }
-@utility bg-hero {
-  background-color: var(--hero);
+
+/* S.H.I.E.L.D. Strategic Grid */
+.theme-shield .bg-grid-subtle {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--primary) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--secondary) 6%, transparent) 1px, transparent 1px);
 }
+
+/* Thor Asgardian Storm Steel & Uru Grey Grid */
+.theme-thor .bg-grid-subtle {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, color-mix(in oklch, var(--primary) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--accent) 7%, transparent) 1px, transparent 1px);
+}
+
+/* Cinematic Page Transition Animations */
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Engineering & Marvel Chips */
+.chip-tech {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background-color: color-mix(in oklch, var(--color-muted) 60%, transparent);
+  color: var(--color-foreground);
+  transition: all 0.2s ease;
+}
+
+.chip-tech:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: color-mix(in oklch, var(--color-primary) 10%, transparent);
+}
+
+/* Marvel Pulse & Glow Utilities */
+.hero-glow {
+  box-shadow: 0 0 45px -10px var(--hero-glow), 0 0 20px -5px var(--hero-glow);
+}
+
+.glow-accent-subtle {
+  box-shadow: 0 4px 24px -6px var(--hero-glow);
+}
+
+/* Arc Reactor Pulse */
 @utility arc-pulse {
   animation: arcPulse 2.4s ease-in-out infinite;
 }
 @keyframes arcPulse {
-  0%, 100% { box-shadow: 0 0 20px var(--hero), 0 0 40px var(--hero), inset 0 0 20px oklch(0.98 0 0 / 0.4); }
-  50% { box-shadow: 0 0 40px var(--hero), 0 0 80px var(--hero), inset 0 0 30px oklch(0.98 0 0 / 0.6); }
+  0%, 100% {
+    box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary), inset 0 0 15px color-mix(in oklch, var(--primary) 50%, white);
+  }
+  50% {
+    box-shadow: 0 0 35px var(--primary), 0 0 70px var(--secondary), inset 0 0 25px color-mix(in oklch, var(--primary) 80%, white);
+  }
 }
+
+/* Lightning Flicker */
 @utility lightning-flicker {
-  animation: lightning 3s ease-in-out infinite;
+  animation: lightning 3.2s ease-in-out infinite;
 }
 @keyframes lightning {
   0%, 90%, 100% { opacity: 1; }
-  92%, 96% { opacity: 0.4; }
+  92%, 96% { opacity: 0.35; }
   94% { opacity: 1; }
 }
+
+/* Float Animations */
 @utility neon-float {
   animation: neonFloat 7s ease-in-out infinite;
 }
@@ -186,21 +386,32 @@
   animation: neonFloat 11s ease-in-out infinite;
 }
 @keyframes neonFloat {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.75; }
-  50% { transform: translate3d(0, -22px, 0) scale(1.08); opacity: 1; }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate3d(0, -18px, 0) scale(1.06); opacity: 1; }
 }
+
 @utility neon-drift {
   animation: neonDrift 14s linear infinite;
 }
 @keyframes neonDrift {
-  0% { transform: translate3d(-8%, 0, 0); }
-  50% { transform: translate3d(8%, -6%, 0); }
-  100% { transform: translate3d(-8%, 0, 0); }
+  0% { transform: translate3d(-6%, 0, 0); }
+  50% { transform: translate3d(6%, -5%, 0); }
+  100% { transform: translate3d(-6%, 0, 0); }
 }
+
 @utility neon-pulse {
   animation: neonPulse 3.2s ease-in-out infinite;
 }
 @keyframes neonPulse {
-  0%, 100% { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 14px currentColor); opacity: 0.9; }
-  50% { filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 32px currentColor); opacity: 1; }
+  0%, 100% { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 14px currentColor); opacity: 0.85; }
+  50% { filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 30px currentColor); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

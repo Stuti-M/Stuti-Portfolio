@@ -1,156 +1,146 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Award, Shield, Star, Trophy, GraduationCap, Github } from "lucide-react";
-import cap from "@/assets/heroes/cap.jpg.asset.json";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Trophy, Award, Shield, Star, GraduationCap } from "lucide-react";
+import { MarvelFloatingParticles } from "../components/MarvelFloatingParticles";
 
 export const Route = createFileRoute("/achievements")({
   head: () => ({
     meta: [
-      { title: "Achievements — Stuti Mohapatra" },
-      { name: "description", content: "2nd place at Anant Chakra Agentic AI Hackathon and SheCodex Coding Challenge, plus certifications and open-source activity." },
-      { property: "og:title", content: "Achievements — Stuti Mohapatra" },
-      { property: "og:description", content: "Hackathon podiums, certifications and developer milestones." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { title: "Achievements | Captain America Protocol — Stuti Mohapatra" },
+      {
+        name: "description",
+        content: "Verified hackathon podiums and competitive programming milestones for Stuti Mohapatra.",
+      },
     ],
   }),
-  component: Achievements,
+  component: AchievementsPage,
 });
 
-const items = [
-  {
-    icon: Trophy,
-    title: "Anant Chakra Agentic AI Hackathon",
-    tag: "2nd Place",
-    body: "Runner-up at the Anant Chakra Agentic AI Hackathon — designed and shipped an agentic AI solution under time pressure, from problem framing to a working demo.",
-  },
-  {
-    icon: Trophy,
-    title: "SheCodex Coding Challenge",
-    tag: "2nd Place",
-    body: "Secured 2nd place in the SheCodex Coding Challenge, a women-in-tech competition testing problem solving, DSA fundamentals and clean implementation.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Front-End Web Development Certification",
-    tag: "Certified",
-    body: "Completed a Front-End Web Development certification covering semantic HTML, modern CSS, responsive layouts and JavaScript-driven interfaces.",
-  },
-  {
-    icon: Github,
-    title: "Active GitHub Developer",
-    tag: "Open Source",
-    body: "Consistently shipping and maintaining public repositories — projects like MoodMe.Up, Drive.Check.Go and Code Submission Hub live in the open.",
-  },
-];
-
-const experience = {
-  role: "Summer Internship",
-  org: "Paradip Port Authority",
-  dept: "Electrical & Mechanical Department",
-  period: "22 June — 21 July 2026",
-  points: [
-    "Successfully completed the summer internship programme",
-    "Worked directly under the IT Manager",
-    "Assisted project execution carried out under Tech Mahindra",
-    "Appreciated for sincerity and diligence",
-  ],
-};
-
-function Achievements() {
+function AchievementsPage() {
   return (
-    <div className="theme-cap cursor-cap min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Captain America backdrop — blueprint tech, red/white/blue */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={cap.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-55" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.35_0.15_250/0.55),transparent_60%),radial-gradient(ellipse_at_bottom,oklch(0.5_0.2_20/0.4),transparent_60%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/45 via-background/60 to-background" />
-        <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0_120px,oklch(0.98_0_0/0.04)_120px_121px)]" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-40 neon-drift" />
-        {/* Floating stars & shield sparks */}
-        <div className="absolute top-[12%] left-[8%] h-3 w-3 rounded-full bg-red-500 text-red-500 neon-float neon-pulse" />
-        <div className="absolute top-[22%] right-[10%] h-2 w-2 rounded-full bg-blue-400 text-blue-400 neon-float-slow neon-pulse" style={{ animationDelay: "-3s" }} />
-        <div className="absolute top-[62%] left-[12%] h-2.5 w-2.5 rounded-full bg-white text-white neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
-        <div className="absolute top-[78%] right-[16%] h-3 w-3 rounded-full border-2 border-red-500 text-red-500 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
-        <div className="absolute top-[48%] right-[42%] h-1.5 w-1.5 rounded-full bg-blue-300 text-blue-300 neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
+    <div className="theme-cap page-enter min-h-screen py-24 px-4 sm:px-6 bg-grid-subtle relative overflow-hidden">
+      {/* 🛡️ Captain America Shield Glowing Particles */}
+      <MarvelFloatingParticles theme="cap" />
+
+      {/* Shield Atmosphere */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-20 left-1/4 h-[550px] w-[750px] rounded-full bg-primary/15 blur-[140px] neon-drift"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-1/4 right-10 h-72 w-72 rounded-full bg-secondary/15 blur-[120px] neon-float"
+      />
+
+      {/* Concentric Shield Rings Backdrop */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-10 opacity-15">
+        {[520, 390, 260, 130].map((size, idx) => (
+          <div
+            key={size}
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 ${
+              idx % 2 === 0 ? "border-secondary" : "border-primary"
+            }`}
+            style={{ width: size, height: size }}
+          />
+        ))}
       </div>
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <div className="text-center mb-14">
-          <p className="font-display text-sm tracking-[0.35em] text-hero uppercase flex items-center justify-center gap-2">
-            <Shield className="h-4 w-4" /> On Your Left
-          </p>
-          <h1 className="mt-3 font-display text-5xl md:text-6xl font-black">
-            Shields <span className="text-hero">Earned</span>
+      <div className="relative mx-auto max-w-5xl">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xl">🛡️</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+              AVENGER 01 // VERIFIED PODIUMS
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
+            Shields Earned & Milestones
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            "The price of freedom is high — but the wins along the way? Priceless."
+          <p className="mt-3 text-muted-foreground max-w-2xl text-base">
+            Documented wins across competitive hackathons, algorithmic contests, and engineering programmes.
           </p>
         </div>
 
-        {/* Captain America Shield */}
-        <div className="flex justify-center mb-16">
-          <div className="relative h-56 w-56">
-            <div className="absolute inset-0 rounded-full bg-red-600 shadow-2xl" />
-            <div className="absolute inset-4 rounded-full bg-white" />
-            <div className="absolute inset-8 rounded-full bg-red-600" />
-            <div className="absolute inset-14 rounded-full bg-blue-800 flex items-center justify-center">
-              <Star className="h-16 w-16 text-white fill-white" />
+        {/* Milestone Cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {/* Card 1: Anant Chakra */}
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-7 transition-all hover:border-primary">
+            <div className="flex items-center justify-between gap-2 mb-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xl font-bold">
+                🥈
+              </div>
+              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                2ND PLACE / RUNNER-UP
+              </span>
+            </div>
+            <h2 className="text-xl font-bold text-foreground">
+              Anant Chakra Agentic AI Hackathon
+            </h2>
+            <p className="text-xs font-semibold text-primary mt-1">
+              Chakravyuh & Genesis 2K26
+            </p>
+            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+              Designed, architected, and shipped <strong className="text-foreground">Sentinel-X</strong> — an autonomous multi-agent AI system for illegal deforestation detection using n8n and Groq LLMs under time constraints.
+            </p>
+          </div>
+
+          {/* Card 2: SheCodex */}
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-7 transition-all hover:border-primary">
+            <div className="flex items-center justify-between gap-2 mb-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xl font-bold">
+                🥈
+              </div>
+              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                2ND PLACE
+              </span>
+            </div>
+            <h2 className="text-xl font-bold text-foreground">
+              SheCodex Women's Day Coding Challenge
+            </h2>
+            <p className="text-xs font-semibold text-primary mt-1">
+              CODEX Club
+            </p>
+            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+              Podium finish testing speed, algorithmic correctness, data structure implementations, and competitive problem solving across complex problem sets.
+            </p>
+          </div>
+        </div>
+
+        {/* Certifications & Industry Recognition */}
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <Shield className="h-5 w-5 text-primary" />
+            <h2 className="text-xl font-bold text-foreground">Industry Recognition & Credentials</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl border border-border/70 bg-muted/20">
+              <p className="font-mono text-xs text-primary font-semibold uppercase">Govt Internship Commendation</p>
+              <p className="text-sm font-bold text-foreground mt-1">Paradip Port Authority (Govt of India)</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Formally commended by Executive Engineer, Planning & Design Cell, for diligence and sincerity.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-border/70 bg-muted/20">
+              <p className="font-mono text-xs text-primary font-semibold uppercase">Front-End Development</p>
+              <p className="text-sm font-bold text-foreground mt-1">Certified Web Engineering</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Semantic modern CSS, JavaScript interfaces, and responsive web systems.
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {items.map(it => (
-            <article key={it.title} className="group relative rounded-xl border border-border bg-card/70 p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-hero hover:hero-glow">
-              <div className="flex items-start justify-between mb-3">
-                <it.icon className="h-8 w-8 text-hero" />
-                <span className="rounded-full border border-hero/40 bg-hero/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-hero">
-                  {it.tag}
-                </span>
-              </div>
-              <h2 className="font-display text-2xl font-bold">{it.title}</h2>
-              <p className="mt-3 text-muted-foreground">{it.body}</p>
-            </article>
-          ))}
+        {/* Bottom Navigation */}
+        <div className="flex items-center justify-between border-t border-border/70 pt-6">
+          <Link to="/skills" className="text-xs font-semibold text-muted-foreground hover:text-primary transition">
+            ← View Skills & Toolbox 🏹
+          </Link>
+          <Link to="/about" className="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+            <span>Discover About & Journey ⚡</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
-
-        {/* Experience timeline */}
-        <div className="mt-16">
-          <h2 className="font-display text-3xl font-black mb-6 flex items-center gap-3">
-            <Award className="h-7 w-7 text-hero" /> Experience
-          </h2>
-          <div className="relative rounded-xl border border-border bg-card/70 p-6 backdrop-blur">
-            <span className="absolute left-0 top-6 bottom-6 w-1 rounded-full bg-hero" />
-            <div className="pl-5">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h3 className="font-display text-xl font-bold">
-                  {experience.role} — <span className="text-hero">{experience.org}</span>
-                </h3>
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">{experience.period}</span>
-              </div>
-              <p className="mt-1 text-sm text-muted-foreground">{experience.dept}</p>
-              <ul className="mt-4 space-y-2 text-sm text-foreground/85">
-                {experience.points.map(p => (
-                  <li key={p} className="flex gap-2">
-                    <span className="text-hero">▸</span>
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 text-center">
-          <a
-            href="https://www.linkedin.com/in/stuti-mohapatra-180713392"
-            target="_blank" rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border-2 border-hero px-6 py-3 font-display text-sm font-bold uppercase tracking-wider text-hero transition hover:bg-hero hover:text-hero-foreground"
-          >
-            More on LinkedIn →
-          </a>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

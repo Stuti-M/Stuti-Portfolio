@@ -1,144 +1,177 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { LeetCodeProgress } from "../components/LeetCodeProgress";
-import { GraduationCap, Linkedin, Zap, Compass } from "lucide-react";
-import thorNeon from "@/assets/heroes/thor-neon.jpg.asset.json";
-import thorStorm from "@/assets/heroes/thor-storm.jpg.asset.json";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Zap, Cpu, Code2, Bot, GraduationCap, ArrowRight, Compass } from "lucide-react";
+import { MarvelFloatingParticles } from "../components/MarvelFloatingParticles";
+import { MjolnirIcon } from "../components/MarvelIcons";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Stuti Mohapatra" },
-      { name: "description", content: "CSE student at SOA University (2025–2029), exploring full stack development, machine learning, AI agents, cloud and open source." },
-      { property: "og:title", content: "About — Stuti Mohapatra" },
-      { property: "og:description", content: "Education timeline, current explorations and live LeetCode progress." },
-      { property: "og:type", content: "profile" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { title: "About & Journey | Thor Protocol — Stuti Mohapatra" },
+      {
+        name: "description",
+        content: "Computer Science Engineering student at SOA University (2025–2029) and builder.",
+      },
     ],
   }),
-  component: About,
+  component: AboutPage,
 });
 
-const exploring = [
-  "Full Stack Development",
-  "Machine Learning",
-  "AI Agents",
-  "Cloud Computing",
-  "Open Source",
-];
-
-const education = [
-  {
-    school: "SOA University",
-    detail: "Bachelor of Technology — Computer Science Engineering",
-    period: "2025 – 2029",
-  },
-  {
-    school: "DAV Public School",
-    detail: "Science",
-    period: "2023 – 2025",
-  },
-];
-
-function About() {
+function AboutPage() {
   return (
-    <div className="theme-thor cursor-thor min-h-[calc(100vh-5rem)] relative overflow-hidden">
-      {/* Thor backdrop — stormcaller cosmos + Mjolnir lightning, asgardian blue & gold */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <img src={thorStorm.url} alt="" className="absolute inset-0 h-full w-full object-cover object-top opacity-70" />
-        <img src={thorNeon.url} alt="" className="absolute inset-0 h-full w-full object-cover object-center opacity-45 mix-blend-screen" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.55_0.2_240/0.5),transparent_60%),radial-gradient(ellipse_at_bottom,oklch(0.9_0.15_90/0.25),transparent_60%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        <div className="absolute top-10 left-10 h-96 w-96 rounded-full bg-hero blur-[140px] opacity-50 neon-drift" />
-        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-yellow-300 blur-[140px] opacity-35 neon-drift" style={{ animationDelay: "-7s" }} />
-        {/* Floating storm sparks */}
-        <div className="absolute top-[15%] right-[12%] h-3 w-3 rounded-full bg-cyan-200 text-cyan-200 neon-float neon-pulse" />
-        <div className="absolute top-[40%] left-[10%] h-2 w-2 rounded-full bg-blue-400 text-blue-400 neon-float-slow neon-pulse" style={{ animationDelay: "-4s" }} />
-        <div className="absolute top-[68%] left-[38%] h-2.5 w-2.5 rounded-full bg-yellow-300 text-yellow-300 neon-float neon-pulse" style={{ animationDelay: "-2s" }} />
-        <div className="absolute top-[82%] right-[22%] h-3 w-3 rounded-full border-2 border-cyan-300 text-cyan-300 neon-float-slow neon-pulse" style={{ animationDelay: "-5s" }} />
-        <div className="absolute top-[25%] left-[55%] h-1.5 w-1.5 rounded-full bg-white text-white neon-float neon-pulse" style={{ animationDelay: "-1s" }} />
-      </div>
+    <div className="theme-thor page-enter min-h-screen py-24 px-4 sm:px-6 bg-grid-subtle relative overflow-hidden">
+      {/* ⚡ Thor Mjolnir & Thunder Floating Particles in Metallic Slate Grey */}
+      <MarvelFloatingParticles theme="thor" />
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      {/* Thunder & Uru Metallic Atmosphere */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-20 right-1/4 h-[550px] w-[800px] rounded-full bg-slate-500/15 blur-[140px] neon-drift"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-1/4 left-10 h-72 w-72 rounded-full bg-primary/20 blur-[120px] lightning-flicker"
+      />
+
+      <div className="relative mx-auto max-w-5xl">
+        {/* About Header */}
         <div className="mb-12">
-          <p className="font-display text-sm tracking-[0.35em] text-yellow-400 uppercase flex items-center gap-2">
-            <Zap className="h-4 w-4 lightning-flicker" /> Asgardian Chronicle
-          </p>
-          <h1 className="mt-3 font-display text-5xl md:text-6xl font-black">
-            Wielder of <span className="text-hero">Code</span>
+          <div className="flex items-center gap-2 mb-2">
+            <MjolnirIcon className="h-5 w-5 text-slate-400 dark:text-slate-300 drop-shadow-[0_0_8px_currentColor]" />
+            <span className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
+              ASGARDIAN CHRONICLE // URU STEEL & BUILDER PROFILE
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
+            A Little About Me & Journey
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Hello! I'm Stuti Mohapatra, a Computer Science Engineering student passionate about web
-            development, artificial intelligence and building impactful real-world applications. I enjoy
-            turning ideas into products that solve genuine problems — from AI-powered apps to
-            government-focused digital solutions.
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+            I'm a Computer Science Engineering student based in Bhubaneswar, Odisha, India who learns by building. I enjoy breaking down difficult problems, experimenting with new technologies, and turning ideas into usable systems.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
-          <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur transition hover:border-hero">
-            <div className="flex items-center gap-3 mb-3">
-              <Compass className="h-6 w-6 text-hero" />
-              <h2 className="font-display text-xl font-bold">Currently Exploring</h2>
+        {/* 3 Core Pillars */}
+        <div className="grid sm:grid-cols-3 gap-4 mb-12">
+          <div className="p-6 rounded-2xl border border-border bg-card hover:border-slate-400 dark:hover:border-slate-500 transition group shadow-xs">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-500/15 text-slate-700 dark:text-slate-300 border border-slate-500/20 mb-3 group-hover:scale-105 transition">
+              <Cpu className="h-5 w-5" />
             </div>
-            <ul className="space-y-2">
-              {exploring.map(e => (
-                <li key={e} className="flex items-center gap-2 text-foreground/90">
-                  <span className="text-hero font-bold">✓</span> {e}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-xl border border-border bg-card/60 p-6 backdrop-blur transition hover:border-hero">
-            <div className="flex items-center gap-3 mb-3">
-              <Linkedin className="h-6 w-6 text-hero" />
-              <h2 className="font-display text-xl font-bold">Professional</h2>
-            </div>
-            <p className="text-foreground/90">
-              Web developer and AI enthusiast shipping real products — MoodMe.Up, Drive.Check.Go and
-              Code Submission Hub — alongside hackathon wins and an industry internship at Paradip Port Authority.
+            <h2 className="text-lg font-bold text-foreground">BUILD</h2>
+            <p className="text-xs text-primary font-mono mt-0.5">AI · Software · IoT</p>
+            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+              Transforming software ideas and hardware prototypes into functional end-to-end applications and connected edge devices.
             </p>
-            <a
-              href="https://www.linkedin.com/in/stuti-mohapatra-180713392"
-              target="_blank" rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-hero hover:underline"
-            >
-              View LinkedIn Profile →
-            </a>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-border bg-card hover:border-slate-400 dark:hover:border-slate-500 transition group shadow-xs">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-500/15 text-slate-700 dark:text-slate-300 border border-slate-500/20 mb-3 group-hover:scale-105 transition">
+              <Code2 className="h-5 w-5" />
+            </div>
+            <h2 className="text-lg font-bold text-foreground">SOLVE</h2>
+            <p className="text-xs text-primary font-mono mt-0.5">DSA · Problem Solving · Systems</p>
+            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+              Deeply practicing data structures, algorithmic paradigms, and mathematical logic.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-border bg-card hover:border-slate-400 dark:hover:border-slate-500 transition group shadow-xs">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-500/15 text-slate-700 dark:text-slate-300 border border-slate-500/20 mb-3 group-hover:scale-105 transition">
+              <Bot className="h-5 w-5" />
+            </div>
+            <h2 className="text-lg font-bold text-foreground">EXPLORE</h2>
+            <p className="text-xs text-primary font-mono mt-0.5">Agentic AI · Edge AI · Embedded</p>
+            <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+              Researching multi-agent collaboration, TinyML models on microcontrollers, and decentralized meshes.
+            </p>
           </div>
         </div>
 
-        {/* Education timeline */}
-        <div className="mb-10 rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
-          <div className="flex items-center gap-3 mb-6">
-            <GraduationCap className="h-6 w-6 text-hero" />
-            <h2 className="font-display text-xl font-bold">Education</h2>
+        {/* How I Build (6-Step Engineering Methodology) */}
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 mb-12">
+          <div className="flex items-center gap-2 mb-2">
+            <Compass className="h-5 w-5 text-primary" />
+            <h2 className="text-xl font-bold text-foreground">How I Build</h2>
           </div>
-          <ol className="relative space-y-8 border-l-2 border-hero/40 pl-6">
-            {education.map(ed => (
-              <li key={ed.school} className="relative">
-                <span className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full bg-hero ring-4 ring-background" />
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-display text-lg font-bold">{ed.school}</h3>
-                  <span className="text-xs uppercase tracking-widest text-muted-foreground">{ed.period}</span>
-                </div>
-                <p className="mt-1 text-sm text-muted-foreground">{ed.detail}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <LeetCodeProgress username="Stuti_Mohapatra" />
-
-        <div className="mt-10 rounded-xl border border-border bg-card/60 p-6 backdrop-blur">
-          <h2 className="font-display text-xl font-bold mb-2">The Journey</h2>
-          <p className="text-muted-foreground">
-            From first lines of Python to full-stack builds and AI experiments — I approach every project
-            like Mjolnir approaches battle: with focus, worthiness, and a bit of thunder. Currently exploring
-            the intersection of AI agents and practical web experiences.
+          <p className="text-sm text-muted-foreground italic mb-6">
+            "I like taking ambiguous problems, breaking them into systems, and turning ideas into working prototypes."
           </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {[
+              { step: "01", title: "UNDERSTAND", desc: "Deconstruct the core constraint & user need" },
+              { step: "02", title: "RESEARCH", desc: "Evaluate architectures & state-of-the-art" },
+              { step: "03", title: "PROTOTYPE", desc: "Rapid proof-of-concept on edge / software" },
+              { step: "04", title: "BUILD", desc: "Production-quality code, schemas & APIs" },
+              { step: "05", title: "TEST", desc: "Stress edge cases & failure states" },
+              { step: "06", title: "ITERATE", desc: "Measure performance & continuously refine" },
+            ].map((p) => (
+              <div
+                key={p.step}
+                className="p-3.5 rounded-xl border border-slate-300/50 dark:border-slate-700/50 bg-slate-500/5 flex flex-col justify-between"
+              >
+                <div>
+                  <span className="font-mono text-xs font-bold text-primary">{p.step}</span>
+                  <h3 className="font-display text-xs font-bold text-foreground mt-0.5">{p.title}</h3>
+                </div>
+                <p className="text-[10px] text-muted-foreground mt-2">{p.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+
+        {/* Education & Journey Timeline */}
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 mb-12 shadow-xs">
+          <div className="flex items-center gap-2 mb-6">
+            <GraduationCap className="h-5 w-5 text-slate-500 dark:text-slate-300" />
+            <h2 className="text-xl font-bold text-foreground">Academic & Career Journey</h2>
+          </div>
+
+          <div className="relative border-l-2 border-slate-400/50 dark:border-slate-600/50 pl-6 space-y-8">
+            <div className="relative">
+              <span className="absolute -left-[31px] top-1 h-3.5 w-3.5 rounded-full bg-slate-500 ring-4 ring-slate-400/20" />
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="text-base font-bold text-foreground">Siksha 'O' Anusandhan University (SOA)</h3>
+                <span className="font-mono text-xs text-slate-600 dark:text-slate-300 font-bold">2025 — 2029</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Bachelor of Technology — Computer Science & Engineering
+              </p>
+            </div>
+
+            <div className="relative">
+              <span className="absolute -left-[31px] top-1 h-3.5 w-3.5 rounded-full bg-slate-500 ring-4 ring-slate-400/20" />
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="text-base font-bold text-foreground">Paradip Port Authority (Govt of India)</h3>
+                <span className="font-mono text-xs text-slate-600 dark:text-slate-300 font-bold">June — July 2026</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Software Developer Intern — IT & Electrical/Mechanical Department
+              </p>
+            </div>
+
+            <div className="relative">
+              <span className="absolute -left-[31px] top-1 h-3.5 w-3.5 rounded-full bg-slate-400/60 ring-4 ring-slate-400/20" />
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="text-base font-bold text-foreground">DAV Public School, Pokhariput</h3>
+                <span className="font-mono text-xs text-muted-foreground">2023 — 2025</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Class XII — Science stream
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Navigation */}
+        <div className="flex items-center justify-between border-t border-border/70 pt-6">
+          <Link to="/achievements" className="text-xs font-semibold text-muted-foreground hover:text-primary transition">
+            ← View Achievements 🛡️
+          </Link>
+          <Link to="/contact" className="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+            <span>Direct Contact & Inquiries ⧗</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
