@@ -101,10 +101,11 @@ const TARGET_SYSTEMS: TargetCategory[] = [
 
 function SkillsPage() {
   const [selectedTargetId, setSelectedTargetId] = useState<string>("target-aiml");
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const activeTarget = TARGET_SYSTEMS.find((t) => t.id === selectedTargetId) || TARGET_SYSTEMS[0];
 
   return (
-    <div className="theme-hawkeye page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden">
+    <div className="theme-hawkeye page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden font-body">
       {/* 🏹 Hawkeye Precision Particles */}
       <MarvelFloatingParticles theme="hawkeye" />
 
@@ -130,10 +131,10 @@ function SkillsPage() {
             <Crosshair className="h-4 w-4" />
             <span>RONIN PROTOCOL // PRECISION TARGETING SYSTEM</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
+          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
             Technical Stack & Target Reticle
           </h1>
-          <p className="mt-3 text-muted-foreground max-w-2xl text-base leading-relaxed">
+          <p className="mt-3 text-muted-foreground max-w-2xl text-base leading-relaxed font-body">
             Zero inflated percentage bars. Select any target vector to lock the crosshairs and inspect verified tools, frameworks, and system foundations.
           </p>
         </div>
@@ -146,7 +147,7 @@ function SkillsPage() {
               <button
                 key={target.id}
                 onClick={() => setSelectedTargetId(target.id)}
-                className={`p-3.5 rounded-xl border text-left transition-all duration-200 font-mono relative overflow-hidden ${
+                className={`p-3.5 rounded-xl border text-left transition-all duration-200 font-mono relative overflow-hidden cursor-pointer ${
                   isSelected
                     ? "border-primary bg-primary/15 shadow-sm scale-102 ring-2 ring-primary/40 text-foreground"
                     : "border-border bg-card/70 hover:border-primary/50 text-muted-foreground hover:text-foreground"
@@ -182,32 +183,63 @@ function SkillsPage() {
               <p className="font-mono text-xs text-muted-foreground mt-0.5">{activeTarget.focusArea}</p>
             </div>
 
-            <span className="font-mono text-xs font-bold px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
-              ● {activeTarget.accuracy}
-            </span>
+            <div className="flex items-center gap-3">
+              {hoveredSkill && (
+                <div className="hidden sm:flex items-center gap-1.5 font-mono text-[11px] text-red-500 bg-red-500/10 border border-red-500/30 px-2.5 py-1 rounded-md animate-[targetReticleLock_0.3s_ease-out]">
+                  <Crosshair className="h-3 w-3 animate-spin [animation-duration:6s]" />
+                  <span>TARGET LOCK: {hoveredSkill}</span>
+                </div>
+              )}
+              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary">
+                ● {activeTarget.accuracy}
+              </span>
+            </div>
           </div>
 
-          {/* Targeted Technologies Grid */}
+          {/* Targeted Technologies Grid with Reticle Lock Mechanics */}
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {activeTarget.skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="group p-4 rounded-xl border border-border bg-muted/20 hover:border-primary hover:bg-card transition-all"
-              >
-                <div className="flex items-center justify-between font-mono text-[10px] text-primary mb-1">
-                  <span className="font-bold">{skill.tag}</span>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground">
-                    🎯 VERIFIED
-                  </span>
+            {activeTarget.skills.map((skill) => {
+              const isTargeted = hoveredSkill === skill.name;
+              return (
+                <div
+                  key={skill.name}
+                  onMouseEnter={() => setHoveredSkill(skill.name)}
+                  onMouseLeave={() => setHoveredSkill(null)}
+                  className={`group p-4 rounded-xl border transition-all duration-200 relative overflow-hidden cursor-crosshair ${
+                    isTargeted
+                      ? "border-primary bg-primary/10 shadow-md ring-2 ring-primary/40 scale-[1.02]"
+                      : "border-border bg-muted/20 hover:border-primary/60 hover:bg-card"
+                  }`}
+                >
+                  {/* Targeting Crosshair Lines on Hover */}
+                  <div
+                    aria-hidden
+                    className={`pointer-events-none absolute inset-0 transition-opacity duration-200 ${
+                      isTargeted ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+                    }`}
+                  >
+                    <div className="absolute top-1.5 left-1.5 font-mono text-[9px] text-purple-400 font-bold">┌</div>
+                    <div className="absolute top-1.5 right-1.5 font-mono text-[9px] text-purple-400 font-bold">┐</div>
+                    <div className="absolute bottom-1.5 left-1.5 font-mono text-[9px] text-purple-400 font-bold">└</div>
+                    <div className="absolute bottom-1.5 right-1.5 font-mono text-[9px] text-purple-400 font-bold">┘</div>
+                  </div>
+
+                  <div className="flex items-center justify-between font-mono text-[10px] text-primary mb-1">
+                    <span className="font-bold">{skill.tag}</span>
+                    <span className={`font-mono text-[9px] flex items-center gap-1 transition-opacity ${isTargeted ? "text-red-500 opacity-100 font-bold" : "opacity-0 group-hover:opacity-100 text-muted-foreground"}`}>
+                      <Crosshair className="h-2.5 w-2.5" />
+                      <span>{isTargeted ? "TARGET ACQUIRED" : "VERIFIED"}</span>
+                    </span>
+                  </div>
+                  <p className="font-display text-base font-extrabold text-foreground group-hover:text-primary transition-colors">
+                    {skill.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                    {skill.description}
+                  </p>
                 </div>
-                <p className="font-display text-base font-extrabold text-foreground group-hover:text-primary transition-colors">
-                  {skill.name}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  {skill.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

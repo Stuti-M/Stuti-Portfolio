@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Moon, Sun, Menu, X, ArrowUpRight, BookOpen, Terminal } from "lucide-react";
+import { Moon, Sun, Menu, X, ArrowUpRight, BookOpen, Terminal, Bot, Sparkles, Command, Briefcase, FileText } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { BlackWidowIcon, ShieldLogoIcon, MjolnirIcon } from "./MarvelIcons";
 import { EngineeringLogModal } from "./EngineeringLog";
+import { useStutiAI } from "./StutiAIContext";
+import { useCommandPalette } from "./CommandPaletteContext";
 
 interface NavItem {
   number: string;
@@ -29,6 +31,8 @@ const navItems: NavItem[] = [
 
 export function Navbar() {
   const { mode, toggleMode } = useTheme();
+  const { openAI } = useStutiAI();
+  const { openCommandPalette, openRecruiterMode } = useCommandPalette();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<NavItem | null>(null);
@@ -109,34 +113,48 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right Actions: Engineering Log + Resume + Theme Toggle */}
+          {/* Right Actions: Command Palette + Recruiter Mode + STUTI AI + Theme Toggle */}
           <div className="flex items-center gap-2">
-            {/* Engineering Log Trigger Button */}
+            {/* Command Palette Trigger */}
             <button
-              onClick={() => setIsLogOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-card px-2.5 sm:px-3 py-1.5 text-xs font-mono font-semibold text-primary transition hover:bg-primary/10 hover:border-primary"
-              title="Open Private Developer Engineering Build Journal"
+              onClick={openCommandPalette}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/80 px-2 sm:px-2.5 py-1.5 text-xs font-mono text-muted-foreground hover:text-foreground hover:border-primary transition shadow-2xs cursor-pointer group"
+              title="Open Command Palette (Ctrl+K / Cmd+K)"
             >
-              <Terminal className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">LOGS</span>
+              <Terminal className="h-3.5 w-3.5 text-primary" />
+              <span className="hidden xl:inline text-[11px]">COMMAND</span>
+              <kbd className="hidden sm:inline-flex items-center text-[9px] px-1 py-0.2 rounded bg-muted border border-border text-muted-foreground font-mono">
+                ⌘K
+              </kbd>
             </button>
 
-            {/* Resume Request Link */}
-            <a
-              href="mailto:mstuti.official@gmail.com?subject=Resume%20Request%20-%20Stuti%20Mohapatra"
-              target="_blank"
-              rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-1 rounded-lg border border-border bg-card/80 px-2.5 py-1.5 text-xs font-mono font-semibold text-foreground/90 transition hover:border-primary hover:text-primary"
+            {/* Recruiter Mode Button */}
+            <button
+              onClick={openRecruiterMode}
+              className="inline-flex items-center gap-1 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-2 sm:px-2.5 py-1.5 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition shadow-2xs cursor-pointer"
+              title="Open Recruiter Fast Scan View"
             >
-              <span>RESUME</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-primary" />
-            </a>
+              <Briefcase className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">RECRUITER</span>
+              <span>→</span>
+            </button>
+
+            {/* STUTI AI Trigger Button */}
+            <button
+              onClick={() => openAI()}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-primary/50 bg-primary/10 px-2.5 sm:px-3 py-1.5 text-xs font-mono font-bold text-primary transition hover:bg-primary hover:text-primary-foreground hover:scale-102 shadow-2xs cursor-pointer group"
+              title="Open STUTI AI Portfolio Intelligence"
+            >
+              <Bot className="h-3.5 w-3.5 group-hover:animate-bounce" />
+              <span className="hidden md:inline">STUTI AI</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            </button>
 
             {/* Dark / Light Mode Toggle */}
             <button
               onClick={toggleMode}
               aria-label="Toggle dark and light theme"
-              className="flex h-8 w-8 items-center justify-center rounded-lg border border-border/80 bg-card/80 text-foreground transition hover:border-primary hover:text-primary"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-border/80 bg-card/80 text-foreground transition hover:border-primary hover:text-primary cursor-pointer"
             >
               {mode === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
             </button>
@@ -156,6 +174,47 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="lg:hidden border-b border-border bg-background/98 backdrop-blur-xl px-4 py-4 shadow-lg animate-in slide-in-from-top-2">
             <nav className="flex flex-col gap-1.5">
+              {/* Mobile Quick Triggers */}
+              <div className="grid grid-cols-2 gap-2 mb-2">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openCommandPalette();
+                  }}
+                  className="flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-mono font-bold bg-muted/60 text-foreground border border-border"
+                >
+                  <Terminal className="h-3.5 w-3.5 text-primary" />
+                  <span>COMMANDS (⌘K)</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openRecruiterMode();
+                  }}
+                  className="flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30"
+                >
+                  <Briefcase className="h-3.5 w-3.5" />
+                  <span>RECRUITER MODE →</span>
+                </button>
+              </div>
+
+              {/* STUTI AI Mobile Quick Button */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openAI();
+                }}
+                className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-mono bg-primary/15 text-primary font-bold border border-primary/40 mb-1"
+              >
+                <div className="flex items-center gap-2">
+                  <Bot className="h-4 w-4 text-primary" />
+                  <span>STUTI AI // ASK MY PORTFOLIO</span>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+                  ● ONLINE
+                </span>
+              </button>
+
               {navItems.map((item) => {
                 const isActive = currentPath === item.to;
                 return (
@@ -187,7 +246,7 @@ export function Navbar() {
                   className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-primary/40 bg-primary/10 text-primary font-mono text-xs font-bold"
                 >
                   <Terminal className="h-3.5 w-3.5" />
-                  <span>ENGINEERING LOG</span>
+                  <span>BUILD LOGS</span>
                 </button>
                 <a
                   href="mailto:mstuti.official@gmail.com?subject=Resume%20Request%20-%20Stuti%20Mohapatra"

@@ -18,10 +18,16 @@ import {
   Cpu,
   Layers,
   Sparkles,
+  Briefcase,
+  Command,
 } from "lucide-react";
 import { MarvelFloatingParticles } from "../components/MarvelFloatingParticles";
 import { BlackWidowIcon, ShieldLogoIcon, ArcReactorIcon } from "../components/MarvelIcons";
 import { EngineeringLogModal } from "../components/EngineeringLog";
+import { StutiAIHeroBanner } from "../components/StutiAIEntry";
+import { useStutiAI } from "../components/StutiAIContext";
+import { useCommandPalette } from "../components/CommandPaletteContext";
+import { BuildLogSection } from "../components/BuildLogSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,9 +62,11 @@ const SOCIAL_LINKS = {
 
 function HomePage() {
   const [isLogOpen, setIsLogOpen] = useState(false);
+  const { openAI } = useStutiAI();
+  const { openCommandPalette, openRecruiterMode } = useCommandPalette();
 
   return (
-    <div className="theme-shield page-enter min-h-screen bg-background text-foreground bg-grid-subtle relative overflow-hidden">
+    <div className="theme-shield page-enter min-h-screen bg-background text-foreground bg-grid-subtle relative overflow-hidden font-body">
       {/* 🛡️ S.H.I.E.L.D. Tactical Particles */}
       <MarvelFloatingParticles theme="shield" />
 
@@ -89,17 +97,24 @@ function HomePage() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="inline-flex items-center gap-1.5 text-muted-foreground">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="hidden sm:inline-flex items-center gap-1.5 text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-primary" />
               <span>BHUBANESWAR, INDIA</span>
             </div>
             <button
+              onClick={() => openRecruiterMode()}
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold transition hover:bg-emerald-500 hover:text-white cursor-pointer"
+            >
+              <Briefcase className="h-3 w-3" />
+              <span>RECRUITER MODE →</span>
+            </button>
+            <button
               onClick={() => setIsLogOpen(true)}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold transition hover:bg-amber-500 hover:text-white"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md border border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold transition hover:bg-amber-500 hover:text-white cursor-pointer"
             >
               <Terminal className="h-3 w-3" />
-              <span>BUILD LOG // 03</span>
+              <span>LOGS</span>
             </button>
           </div>
         </div>
@@ -109,41 +124,41 @@ function HomePage() {
           {/* Left Column: Direct Builder Statement */}
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-primary mb-2 font-bold">
-              01 // COMPUTER SCIENCE ENGINEER & BUILDER
+              01 // SOFTWARE • AI • SYSTEMS
             </p>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.05]">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.05]">
               STUTI MOHAPATRA
             </h1>
 
-            <p className="mt-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground/90">
+            <p className="mt-4 text-xl sm:text-2xl font-bold tracking-tight text-foreground/90 font-display">
               I build systems that{" "}
               <span className="text-primary underline decoration-primary/40 decoration-2 underline-offset-4">
                 turn ideas into working products.
               </span>
             </p>
 
-            <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
+            <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl font-body">
               Computer Science Engineering undergraduate at Siksha 'O' Anusandhan University (2025–2029). Building at the intersection of on-device Edge AI, autonomous multi-agent systems, embedded IoT telemetry, and algorithms.
             </p>
 
-            {/* Direct Project Bullets - Real Content, Not Generic Copy */}
+            {/* Direct Project Bullets */}
             <div className="mt-6 space-y-2.5 font-mono text-xs max-w-xl">
               <div className="p-3 rounded-lg border border-border/80 bg-card/60 flex items-center justify-between">
                 <span className="text-foreground">
-                  <strong className="text-primary">BUILD_01:</strong> Offline Emergency Wearable (TinyML + ESP32 + LoRa)
+                  <strong className="text-primary font-mono">BUILD_001:</strong> Offline Emergency Wearable (TinyML + ESP32 + LoRa)
                 </span>
                 <span className="text-[10px] text-amber-500 font-bold">ACTIVE</span>
               </div>
               <div className="p-3 rounded-lg border border-border/80 bg-card/60 flex items-center justify-between">
                 <span className="text-foreground">
-                  <strong className="text-primary">BUILD_02:</strong> Multi-Agent Deforestation Detection (Groq + n8n)
+                  <strong className="text-primary font-mono">BUILD_002:</strong> Multi-Agent Deforestation AI (Groq + n8n)
                 </span>
-                <span className="text-[10px] text-emerald-500 font-bold">2ND PLACE</span>
+                <span className="text-[10px] text-emerald-500 font-bold">🥈 2ND PLACE</span>
               </div>
               <div className="p-3 rounded-lg border border-border/80 bg-card/60 flex items-center justify-between">
                 <span className="text-foreground">
-                  <strong className="text-primary">BUILD_03:</strong> Civic Infrastructure GeoGrievance AI (CV + FastAPI)
+                  <strong className="text-primary font-mono">BUILD_003:</strong> Civic GeoGrievance AI (CV + FastAPI)
                 </span>
                 <span className="text-[10px] text-sky-500 font-bold">DEVELOPING</span>
               </div>
@@ -151,20 +166,36 @@ function HomePage() {
 
             {/* Action Buttons */}
             <div className="mt-8 flex flex-wrap gap-3 items-center">
-              <Link
-                to="/projects"
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-mono font-bold text-primary-foreground shadow-sm transition hover:opacity-95 hover:scale-102 hero-glow"
+              <button
+                onClick={() => openAI()}
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-xs sm:text-sm font-mono font-bold text-primary-foreground shadow-sm transition hover:opacity-95 hover:scale-102 hero-glow cursor-pointer"
               >
-                <span>03 WORK // IRON MAN HUD 🦾</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+                <Sparkles className="h-4 w-4" />
+                <span>STUTI AI // ASK PORTFOLIO</span>
+              </button>
+
+              <button
+                onClick={() => openRecruiterMode()}
+                className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/50 bg-emerald-500/10 px-5 py-3 text-xs sm:text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400 transition hover:bg-emerald-500 hover:text-white shadow-2xs cursor-pointer"
+              >
+                <Briefcase className="h-4 w-4" />
+                <span>RECRUITER MODE →</span>
+              </button>
+
+              <button
+                onClick={() => openCommandPalette()}
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-xs sm:text-sm font-mono font-semibold text-muted-foreground hover:text-foreground hover:border-primary transition cursor-pointer"
+              >
+                <Terminal className="h-4 w-4 text-primary" />
+                <span>COMMANDS (⌘K)</span>
+              </button>
 
               <Link
-                to="/building"
-                className="inline-flex items-center gap-2 rounded-xl border border-primary/40 bg-card/80 px-5 py-3 text-sm font-mono font-semibold text-foreground transition hover:border-primary hover:bg-muted/60"
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-xl border border-primary/40 bg-card/80 px-4 py-3 text-xs sm:text-sm font-mono font-semibold text-foreground transition hover:border-primary hover:bg-muted/60"
               >
-                <span>02 BUILD // SPIDER-MAN NETWORK 🕷️</span>
-                <ArrowUpRight className="h-4 w-4 text-primary" />
+                <span>WORK 🦾</span>
+                <ArrowRight className="h-4 w-4 text-primary" />
               </Link>
             </div>
 
@@ -254,19 +285,27 @@ function HomePage() {
             {/* Quick Metrics Bar */}
             <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
               <Link to="/achievements" className="p-3 rounded-xl border border-border bg-card/60 hover:border-primary transition">
-                <p className="text-xl font-extrabold text-foreground">2×</p>
+                <p className="text-xl font-extrabold text-foreground font-display">2×</p>
                 <p className="text-[10px] text-muted-foreground mt-0.5">Podium Runner-up</p>
               </Link>
               <Link to="/experience" className="p-3 rounded-xl border border-border bg-card/60 hover:border-primary transition">
-                <p className="text-xl font-extrabold text-foreground">1</p>
+                <p className="text-xl font-extrabold text-foreground font-display">1</p>
                 <p className="text-[10px] text-muted-foreground mt-0.5">Govt Internship</p>
               </Link>
               <Link to="/projects" className="p-3 rounded-xl border border-border bg-card/60 hover:border-primary transition">
-                <p className="text-xl font-extrabold text-foreground">3</p>
-                <p className="text-[10px] text-muted-foreground mt-0.5">Featured Systems</p>
+                <p className="text-xl font-extrabold text-foreground font-display">4</p>
+                <p className="text-[10px] text-muted-foreground mt-0.5">Engineered Builds</p>
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* 🚀 NEW SECTION 3: BUILD LOG // HOW THE WORK EVOLVES */}
+        <BuildLogSection />
+
+        {/* 🔥 SIGNATURE FEATURE: STUTI AI // ASK MY PORTFOLIO */}
+        <div className="mt-8">
+          <StutiAIHeroBanner onOpen={(prompt) => openAI(prompt)} />
         </div>
 
         {/* Marvel Engineering Worlds Grid */}
@@ -283,7 +322,7 @@ function HomePage() {
               { to: "/achievements", title: "ACHIEVEMENTS", hero: "Captain America", cue: "Shield Podiums & Wins", emoji: "🛡️", num: "06" },
               { to: "/about", title: "ABOUT", hero: "Thor", cue: "Asgardian Chronicle & Journey", emoji: "⚡", num: "07" },
               { to: "/contact", title: "CONTACT", hero: "Black Widow", cue: "Red Room Tactical Comms", isWidow: true, num: "08" },
-              { action: () => setIsLogOpen(true), title: "ENGINEERING LOG", hero: "Private Journal", cue: "Developer Build Notes", isLog: true, num: "LOG" },
+              { action: () => openAI(), title: "STUTI AI", hero: "AI Portfolio Console", cue: "Ask My Portfolio System", isAI: true, num: "AI" },
             ].map((card) => {
               const content = (
                 <div className="p-4 rounded-xl border border-border bg-card/70 hover:border-primary hover:bg-card transition flex flex-col justify-between group h-full">
@@ -292,18 +331,18 @@ function HomePage() {
                       <span className="text-primary font-bold">{card.num}</span>
                       <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary transition" />
                     </div>
-                    <h3 className="font-mono text-sm font-extrabold text-foreground group-hover:text-primary transition">
+                    <h3 className="font-display text-sm font-extrabold text-foreground group-hover:text-primary transition">
                       {card.title}
                     </h3>
                     <p className="font-mono text-[10px] text-primary font-semibold mt-0.5">{card.hero}</p>
                   </div>
-                  <p className="text-[11px] text-muted-foreground mt-2">{card.cue}</p>
+                  <p className="text-[11px] text-muted-foreground mt-2 font-body">{card.cue}</p>
                 </div>
               );
 
               if (card.action) {
                 return (
-                  <button key={card.title} onClick={card.action} className="text-left w-full">
+                  <button key={card.title} onClick={card.action} className="text-left w-full cursor-pointer">
                     {content}
                   </button>
                 );

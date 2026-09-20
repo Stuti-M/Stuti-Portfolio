@@ -143,7 +143,7 @@ function BuildingPage() {
   const selectedNode = NETWORK_NODES.find((n) => n.id === selectedNodeId) || NETWORK_NODES[0];
 
   return (
-    <div className="theme-spiderman page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden">
+    <div className="theme-spiderman page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden font-body">
       {/* 🕷️ Spider-Man Floating Particles */}
       <MarvelFloatingParticles theme="spiderman" />
 
@@ -171,10 +171,10 @@ function BuildingPage() {
               ● CONSTANTLY EVOLVING NETWORK
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
+          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
             What I'm Currently Building
           </h1>
-          <p className="mt-3 text-muted-foreground max-w-2xl text-base leading-relaxed">
+          <p className="mt-3 text-muted-foreground max-w-2xl text-base leading-relaxed font-body">
             Instead of static ideas, my projects operate as an interconnected network of edge hardware, autonomous agents, and systems engineering.
           </p>
         </div>
@@ -202,8 +202,23 @@ function BuildingPage() {
               </span>
             </div>
 
-            {/* Kinetic Web Node Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+            {/* Web Node Connection Flow Indicator */}
+            <div className="mb-4 flex items-center justify-between px-1">
+              <div className="flex items-center gap-2 font-mono text-[11px] text-sky-400 font-semibold">
+                <span className="h-2 w-2 rounded-full bg-sky-400 animate-ping" />
+                <span>PROJECT</span>
+                <span className="text-muted-foreground">→</span>
+                <span className="px-2 py-0.5 rounded bg-sky-500/15 border border-sky-400/40 text-sky-300">WEB NODE ACTIVATED</span>
+                <span className="text-muted-foreground">→</span>
+                <span className="px-2 py-0.5 rounded bg-primary/15 border border-primary/40 text-primary">DETAILS REVEALED</span>
+              </div>
+              <span className="hidden sm:inline font-mono text-[10px] text-muted-foreground">
+                KINETIC STRANDS: {selectedNode.connections.length} ACTIVE
+              </span>
+            </div>
+
+            {/* Kinetic Web Node Grid with Spring Physics & Strand Reactions */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-8 relative">
               {NETWORK_NODES.map((node) => {
                 const isSelected = selectedNode.id === node.id;
                 const isConnected = selectedNode.connections.includes(node.id);
@@ -211,28 +226,53 @@ function BuildingPage() {
                   <button
                     key={node.id}
                     onClick={() => setSelectedNodeId(node.id)}
-                    className={`p-4 rounded-xl border text-left transition-all duration-200 relative ${
+                    className={`p-4 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group cursor-pointer ${
                       isSelected
-                        ? "border-primary bg-primary/15 shadow-md scale-102 ring-2 ring-primary/30"
+                        ? "border-primary bg-primary/15 shadow-md scale-102 ring-2 ring-primary/40"
                         : isConnected
-                        ? "border-secondary/70 bg-secondary/10 hover:border-primary"
-                        : "border-border bg-card/60 hover:border-primary/40 text-muted-foreground"
-                    }`}
+                        ? "border-sky-400/60 bg-sky-500/10 hover:border-primary hover:bg-card/90"
+                        : "border-border bg-card/60 hover:border-primary/50 hover:bg-card/90 text-muted-foreground"
+                    } hover:-translate-y-1 hover:rotate-[-0.3deg] active:scale-98`}
                   >
-                    <div className="flex items-center justify-between font-mono text-[10px] mb-1.5">
+                    {/* Spider-Man Web Silk Strand on Hover / Connected */}
+                    <div
+                      aria-hidden
+                      className={`pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent transition-opacity duration-300 ${
+                        isSelected || isConnected ? "opacity-100" : "opacity-0 group-hover:opacity-80"
+                      }`}
+                    />
+
+                    {/* Subtle Corner Web Anchor */}
+                    <div className="absolute top-1.5 right-1.5 opacity-20 group-hover:opacity-80 transition-opacity">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-sky-400">
+                        <path d="M2 2 L22 2 M2 2 L2 22 M2 2 L18 18 M2 8 L8 2 M2 14 L14 2" />
+                      </svg>
+                    </div>
+
+                    <div className="flex items-center justify-between font-mono text-[10px] mb-1.5 relative z-10">
                       <span className="font-bold text-primary">{node.category}</span>
                       {isConnected && !isSelected && (
-                        <span className="text-secondary font-bold">⚡ LINKED</span>
+                        <span className="text-sky-400 font-bold flex items-center gap-1">
+                          <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
+                          WEB LINKED
+                        </span>
                       )}
                       {isSelected && (
-                        <span className="text-primary font-bold">● ACTIVE FOCUS</span>
+                        <span className="text-primary font-bold flex items-center gap-1">
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                          NODE ACTIVATED
+                        </span>
                       )}
                     </div>
-                    <p className="font-display text-sm font-extrabold text-foreground">{node.label}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{node.subtext}</p>
-                    <div className="mt-3 flex items-center justify-between pt-2 border-t border-border/60 font-mono text-[10px]">
+                    <p className="font-display text-sm font-extrabold text-foreground relative z-10">{node.label}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5 relative z-10">{node.subtext}</p>
+                    
+                    <div className="mt-3 flex items-center justify-between pt-2 border-t border-border/60 font-mono text-[10px] relative z-10">
                       <span className={`px-2 py-0.5 rounded-full border ${node.statusColor}`}>
                         {node.status}
+                      </span>
+                      <span className="text-muted-foreground/70 group-hover:text-primary transition font-semibold">
+                        {node.connections.length} links →
                       </span>
                     </div>
                   </button>

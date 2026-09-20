@@ -18,7 +18,7 @@ export const Route = createFileRoute("/achievements")({
 
 function AchievementsPage() {
   return (
-    <div className="theme-cap page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden">
+    <div className="theme-cap page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden font-body">
       {/* 🛡️ Captain America Shield Particles */}
       <MarvelFloatingParticles theme="cap" />
 
@@ -42,39 +42,76 @@ function AchievementsPage() {
             <ShieldLogoIcon className="h-4 w-4 text-primary" />
             <span>AVENGER 01 PROTOCOL // VERIFIED PODIUMS & HONORS</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
+          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground tracking-tight">
             Shields Earned & Milestones
           </h1>
-          <p className="mt-3 text-muted-foreground max-w-2xl text-base leading-relaxed">
+          <p className="mt-3 text-muted-foreground max-w-2xl text-base leading-relaxed font-body">
             A documented track record of hackathon podium finishes, competitive algorithmic rankings, and governmental commendations.
           </p>
         </div>
 
-        {/* Major Podium Cards Grid */}
+        {/* Heroic Milestone Journey Tracker */}
+        <div className="mb-8 rounded-2xl border border-primary/30 bg-card/60 p-4 backdrop-blur-sm">
+          <div className="flex items-center justify-between font-mono text-[11px] mb-2 text-muted-foreground">
+            <span className="flex items-center gap-2 text-primary font-bold">
+              <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+              VERIFIED MILESTONE CHRONICLE
+            </span>
+            <span className="text-primary font-bold">DISCIPLINE // PROGRESS</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold">
+              ★ MILESTONE 01: AGENTIC AI HACKATHON (2ND)
+            </span>
+            <span className="text-muted-foreground">→</span>
+            <span className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold">
+              ★ MILESTONE 02: SHECODEX ALGORITHMS (2ND)
+            </span>
+            <span className="text-muted-foreground">→</span>
+            <span className="px-2.5 py-1 rounded-md bg-primary/10 border border-primary/30 text-primary font-bold">
+              ★ MILESTONE 03: GOVT COMMENDATION
+            </span>
+          </div>
+        </div>
+
+        {/* Major Podium Cards Grid with Collectible Shield Milestones */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {/* Podium 1: Anant Chakra Agentic AI Hackathon */}
-          <div className="rounded-2xl border-2 border-amber-500/40 bg-card p-6 sm:p-8 shadow-sm transition-all hover:border-amber-500 relative overflow-hidden">
-            <div className="flex items-center justify-between gap-2 mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-2xl font-bold">
-                🥈
+          <div className="rounded-2xl border-2 border-amber-500/40 bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:border-amber-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] relative overflow-hidden group cursor-pointer">
+            {/* Shield Radial Highlight on Hover */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+
+            <div className="flex items-center justify-between gap-2 mb-4 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-2xl font-bold group-hover:scale-110 transition-transform">
+                  🥈
+                </div>
+                <div>
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase font-bold tracking-wider">
+                    ACHIEVEMENT_01
+                  </span>
+                  <p className="font-mono text-xs text-primary font-semibold">Chakravyuh & Genesis 2K26</p>
+                </div>
               </div>
-              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30">
-                2ND PLACE // RUNNER-UP
+
+              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                <span>★</span>
+                <span>2ND PLACE // RUNNER-UP</span>
               </span>
             </div>
 
-            <h2 className="text-2xl font-extrabold text-foreground tracking-tight">
+            <h2 className="text-2xl font-extrabold text-foreground tracking-tight relative z-10">
               Anant Chakra Agentic AI Hackathon
             </h2>
-            <p className="font-mono text-xs text-primary font-semibold mt-1">
-              Chakravyuh & Genesis 2K26
-            </p>
 
-            <p className="text-sm text-foreground/90 mt-4 leading-relaxed">
+            <p className="text-sm text-foreground/90 mt-4 leading-relaxed relative z-10">
               Designed and built <strong className="text-foreground">Sentinel-X</strong> — an autonomous multi-agent AI system for illegal deforestation detection using n8n orchestration and high-velocity Groq LLMs under tight hackathon sprint constraints.
             </p>
 
-            <div className="mt-6 pt-4 border-t border-border/80 flex flex-wrap gap-2">
+            <div className="mt-6 pt-4 border-t border-border/80 flex flex-wrap gap-2 relative z-10">
               {["Multi-Agent AI", "n8n", "Groq LLM", "Deforestation Defense"].map((t) => (
                 <span key={t} className="chip-tech">
                   {t}
@@ -84,28 +121,41 @@ function AchievementsPage() {
           </div>
 
           {/* Podium 2: SheCodex Coding Challenge */}
-          <div className="rounded-2xl border-2 border-amber-500/40 bg-card p-6 sm:p-8 shadow-sm transition-all hover:border-amber-500 relative overflow-hidden">
-            <div className="flex items-center justify-between gap-2 mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-2xl font-bold">
-                🥈
+          <div className="rounded-2xl border-2 border-amber-500/40 bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:border-amber-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] relative overflow-hidden group cursor-pointer">
+            {/* Shield Radial Highlight on Hover */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+
+            <div className="flex items-center justify-between gap-2 mb-4 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-2xl font-bold group-hover:scale-110 transition-transform">
+                  🥈
+                </div>
+                <div>
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase font-bold tracking-wider">
+                    ACHIEVEMENT_02
+                  </span>
+                  <p className="font-mono text-xs text-primary font-semibold">CODEX Club</p>
+                </div>
               </div>
-              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30">
-                2ND PLACE // PODIUM
+
+              <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                <span>★</span>
+                <span>2ND PLACE // PODIUM</span>
               </span>
             </div>
 
-            <h2 className="text-2xl font-extrabold text-foreground tracking-tight">
+            <h2 className="text-2xl font-extrabold text-foreground tracking-tight relative z-10">
               SheCodex Women's Day Coding Challenge
             </h2>
-            <p className="font-mono text-xs text-primary font-semibold mt-1">
-              CODEX Club
-            </p>
 
-            <p className="text-sm text-foreground/90 mt-4 leading-relaxed">
+            <p className="text-sm text-foreground/90 mt-4 leading-relaxed relative z-10">
               Podium finish testing algorithmic accuracy, optimal time/space complexity, data structure design, and speed across complex competitive coding challenges.
             </p>
 
-            <div className="mt-6 pt-4 border-t border-border/80 flex flex-wrap gap-2">
+            <div className="mt-6 pt-4 border-t border-border/80 flex flex-wrap gap-2 relative z-10">
               {["Data Structures", "Algorithms", "Competitive Coding", "Speed & Accuracy"].map((t) => (
                 <span key={t} className="chip-tech">
                   {t}

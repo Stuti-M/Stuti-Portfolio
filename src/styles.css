@@ -29,16 +29,25 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 /* Base Light & Dark Theme Foundation */
 :root {
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: var(--font-body);
+
   --radius: 0.85rem;
   --background: oklch(0.985 0.005 85);
   --foreground: oklch(0.18 0.015 250);
+  --surface: oklch(1 0 0);
+  --text-primary: oklch(0.18 0.015 250);
+  --text-secondary: oklch(0.45 0.02 260);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.18 0.015 250);
   --popover: oklch(1 0 0);
@@ -65,6 +74,9 @@
 .dark {
   --background: oklch(0.11 0.018 260);
   --foreground: oklch(0.97 0.005 250);
+  --surface: oklch(0.155 0.022 260);
+  --text-primary: oklch(0.97 0.005 250);
+  --text-secondary: oklch(0.65 0.02 260);
   --card: oklch(0.155 0.022 260);
   --card-foreground: oklch(0.97 0.005 250);
   --popover: oklch(0.155 0.022 260);
@@ -259,9 +271,21 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.025em;
     font-weight: 700;
   }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 /* Subtle Technical Grid & Dot Patterns */
@@ -430,6 +454,23 @@
   animation: thorThunder 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Captain America Shield Radial Expand Sweep */
+@keyframes capShieldExpandSweep {
+  0% {
+    opacity: 0;
+    transform: scale(0.975);
+    filter: contrast(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: contrast(1);
+  }
+}
+.theme-cap.page-enter {
+  animation: capShieldExpandSweep 0.36s cubic-bezier(0.18, 1, 0.32, 1) forwards;
+}
+
 /* Black Widow Crimson Tactical Scan */
 @keyframes widowScan {
   0% {
@@ -547,6 +588,46 @@
   50% { filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 30px currentColor); opacity: 1; }
 }
 
+/* Character Specific Mechanic Keyframes */
+@keyframes starkScanLine {
+  0% { transform: translateY(-100%); opacity: 0; }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.85; }
+  100% { transform: translateY(500%); opacity: 0; }
+}
+
+@keyframes gammaImpactThud {
+  0% { transform: scale(1); }
+  30% { transform: scale(0.985) translateY(2px); }
+  60% { transform: scale(1.01) translateY(-1px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes targetReticleLock {
+  0% { transform: scale(1.4) rotate(-20deg); opacity: 0; }
+  60% { transform: scale(0.95) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes shieldRadialExpand {
+  0% { transform: scale(0.85); opacity: 0.3; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+@keyframes thorElectricBorder {
+  0%, 100% { border-color: color-mix(in oklch, var(--primary) 40%, transparent); }
+  25% { border-color: oklch(0.85 0.18 230); box-shadow: 0 0 20px rgba(147, 197, 253, 0.4); }
+  50% { border-color: color-mix(in oklch, var(--primary) 70%, transparent); }
+  75% { border-color: oklch(0.90 0.20 220); box-shadow: 0 0 25px rgba(147, 197, 253, 0.6); }
+}
+
+@keyframes widowCipherScan {
+  0% { width: 0%; opacity: 0; }
+  50% { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 0.4; }
+}
+
 /* Custom Cursor Visibility */
 @media (pointer: coarse) {
   .custom-cursor-container {
@@ -562,3 +643,4 @@
     scroll-behavior: auto !important;
   }
 }
+

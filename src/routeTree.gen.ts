@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AchievementsRouteImport } from './routes/achievements'
+import { Route as AiRouteImport } from './routes/ai'
 import { Route as BuildingRouteImport } from './routes/building'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExperienceRouteImport } from './routes/experience'
@@ -31,6 +32,11 @@ const AboutRoute = AboutRouteImport.update({
 const AchievementsRoute = AchievementsRouteImport.update({
   id: '/achievements',
   path: '/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiRoute = AiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuildingRoute = BuildingRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/ai': typeof AiRoute
   '/building': typeof BuildingRoute
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/ai': typeof AiRoute
   '/building': typeof BuildingRoute
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/achievements': typeof AchievementsRoute
+  '/ai': typeof AiRoute
   '/building': typeof BuildingRoute
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/ai'
     | '/building'
     | '/contact'
     | '/experience'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/ai'
     | '/building'
     | '/contact'
     | '/experience'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/achievements'
+    | '/ai'
     | '/building'
     | '/contact'
     | '/experience'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AchievementsRoute: typeof AchievementsRoute
+  AiRoute: typeof AiRoute
   BuildingRoute: typeof BuildingRoute
   ContactRoute: typeof ContactRoute
   ExperienceRoute: typeof ExperienceRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/achievements'
       fullPath: '/achievements'
       preLoaderRoute: typeof AchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai': {
+      id: '/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/building': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AchievementsRoute: AchievementsRoute,
+  AiRoute: AiRoute,
   BuildingRoute: BuildingRoute,
   ContactRoute: ContactRoute,
   ExperienceRoute: ExperienceRoute,

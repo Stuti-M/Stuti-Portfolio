@@ -5,6 +5,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -13,12 +14,16 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "../components/Navbar";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { CustomCursor } from "../components/CustomCursor";
+import { StutiAIProvider } from "../components/StutiAIContext";
+import { CommandPaletteProvider } from "../components/CommandPaletteContext";
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    if (error instanceof Error) {
+      reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    }
   }, [error]);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -83,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
     ],
   }),
@@ -112,13 +117,17 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <CustomCursor />
-        <div className="min-h-screen flex flex-col bg-background text-foreground">
-          <Navbar />
-          <main className="flex-1">
-            <Outlet />
-          </main>
-        </div>
+        <StutiAIProvider>
+          <CommandPaletteProvider>
+            <CustomCursor />
+            <div className="min-h-screen flex flex-col bg-background text-foreground font-body">
+              <Navbar />
+              <main className="flex-1">
+                <Outlet />
+              </main>
+            </div>
+          </CommandPaletteProvider>
+        </StutiAIProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

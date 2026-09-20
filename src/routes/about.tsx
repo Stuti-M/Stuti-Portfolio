@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Zap, Cpu, Code2, Bot, GraduationCap, ArrowRight, Compass, Compass as MethodIcon } from "lucide-react";
+import { Zap, Cpu, Code2, Bot, GraduationCap, ArrowRight, Compass, Layout } from "lucide-react";
 import { MarvelFloatingParticles } from "../components/MarvelFloatingParticles";
 import { MjolnirIcon } from "../components/MarvelIcons";
 
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <div className="theme-thor page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden">
+    <div className="theme-thor page-enter min-h-screen py-20 px-3 sm:px-6 bg-grid-subtle relative overflow-hidden font-body">
       {/* ⚡ Thor Mjolnir Particles */}
       <MarvelFloatingParticles theme="thor" />
 
@@ -39,47 +39,131 @@ function AboutPage() {
             <MjolnirIcon className="h-4 w-4 text-primary" />
             <span>ASGARDIAN CHRONICLE // BUILDER PROFILE & PHILOSOPHY</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight">
             Engineering & Journey
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl font-body">
             I am a Computer Science Engineering student based in Bhubaneswar, Odisha, India who learns by building real systems. I take ambiguous problems, deconstruct them into architectural layers, and turn ideas into working prototypes.
           </p>
         </div>
 
-        {/* 3 Core Builder Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-primary transition group shadow-2xs">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 mb-4 group-hover:scale-105 transition">
-              <Cpu className="h-5 w-5" />
+        {/* Development Mindset Journey Connection with Asgardian Lightning Energy Trail */}
+        <div className="mb-4 flex items-center justify-between px-2">
+          <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse shadow-[0_0_8px_#60a5fa]" />
+            <span>Core Development Mindset & Journey</span>
+          </span>
+          <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-primary/80">
+            <span className="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">BUILD</span>
+            <span className="text-blue-400/80 animate-pulse">⚡→</span>
+            <span className="px-2 py-0.5 rounded bg-primary/15 border border-primary/30 text-primary font-semibold">DESIGN</span>
+            <span className="text-blue-400/80 animate-pulse">⚡→</span>
+            <span className="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">SOLVE</span>
+            <span className="text-blue-400/80 animate-pulse">⚡→</span>
+            <span className="px-2 py-0.5 rounded bg-primary/10 border border-primary/20">EXPLORE</span>
+          </div>
+        </div>
+
+        {/* 4 Core Builder Pillars with Electric Energy Borders */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 relative">
+          {/* 01. BUILD */}
+          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-blue-400/80 hover:shadow-[0_0_25px_rgba(96,165,250,0.25)] transition-all duration-300 group shadow-2xs flex flex-col justify-between cursor-default relative overflow-hidden">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 mb-4 group-hover:scale-105 group-hover:border-blue-400/40 group-hover:shadow-[0_0_12px_rgba(96,165,250,0.4)] transition">
+                <Cpu className="h-5 w-5" />
+              </div>
+              <h2 className="text-xl font-extrabold text-foreground">01. BUILD</h2>
+              <p className="font-mono text-xs text-primary mt-0.5">AI · Systems · IoT</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
+                Transforming software architectures and microcontroller firmware into reliable, working end-to-end applications and connected edge hardware.
+              </p>
             </div>
-            <h2 className="text-xl font-extrabold text-foreground">01. BUILD</h2>
-            <p className="font-mono text-xs text-primary mt-0.5">AI · Systems · IoT</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
-              Transforming software architectures and microcontroller firmware into reliable, working end-to-end applications and connected edge hardware.
-            </p>
           </div>
 
-          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-primary transition group shadow-2xs">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 mb-4 group-hover:scale-105 transition">
-              <Code2 className="h-5 w-5" />
+          {/* 02. UI/UX ENTHUSIAST */}
+          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-blue-400/80 hover:shadow-[0_0_25px_rgba(96,165,250,0.25)] transition-all duration-300 group shadow-2xs relative overflow-hidden flex flex-col justify-between cursor-default">
+            {/* Electric wireframe HUD appearing on hover */}
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:12px_12px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_60%,transparent_100%)] z-0"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 group-hover:scale-105 group-hover:border-blue-400/40 group-hover:shadow-[0_0_12px_rgba(96,165,250,0.4)] transition">
+                  <Layout className="h-5 w-5" />
+                </div>
+                {/* Mini UI wireframe indicator with moving cursor on hover */}
+                <div className="opacity-40 group-hover:opacity-100 transition-all duration-300 flex items-center gap-1.5 px-2 py-1 rounded-md border border-primary/20 bg-primary/5 text-[10px] font-mono text-primary">
+                  <div className="relative h-2.5 w-2.5">
+                    <div className="absolute inset-0 rounded-full bg-primary/40 group-hover:scale-125 transition-transform" />
+                    <div className="absolute inset-0.5 rounded-full bg-primary" />
+                  </div>
+                  <span className="hidden sm:inline">UI / UX</span>
+                </div>
+              </div>
+
+              <h2 className="text-xl font-extrabold text-foreground">02. UI/UX ENTHUSIAST</h2>
+              <p className="font-mono text-xs text-primary mt-0.5">Design Systems · Interaction · Flow</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
+                Crafts elegant web experiences where thoughtful design meets intuitive interaction.
+              </p>
             </div>
-            <h2 className="text-xl font-extrabold text-foreground">02. SOLVE</h2>
-            <p className="font-mono text-xs text-primary mt-0.5">DSA · Complexity · Systems Logic</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
-              Practicing data structures and algorithmic complexity daily to engineer software that is memory-efficient and mathematically sound.
-            </p>
+
+            {/* Subtle interactive wireframe footer bar */}
+            <div className="relative z-10 mt-4 pt-3 border-t border-border/40 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center justify-between gap-1 text-[10px] font-mono text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary group-hover:animate-ping" />
+                  Visual Polish
+                </span>
+                <span className="text-primary/70">Intuitive · Fluid</span>
+              </div>
+            </div>
           </div>
 
-          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-primary transition group shadow-2xs">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 mb-4 group-hover:scale-105 transition">
-              <Bot className="h-5 w-5" />
+          {/* 03. SOLVE */}
+          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-blue-400/80 hover:shadow-[0_0_25px_rgba(96,165,250,0.25)] transition-all duration-300 group shadow-2xs flex flex-col justify-between cursor-default relative overflow-hidden">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 mb-4 group-hover:scale-105 group-hover:border-blue-400/40 group-hover:shadow-[0_0_12px_rgba(96,165,250,0.4)] transition">
+                <Code2 className="h-5 w-5" />
+              </div>
+              <h2 className="text-xl font-extrabold text-foreground">03. SOLVE</h2>
+              <p className="font-mono text-xs text-primary mt-0.5">DSA · Complexity · Systems Logic</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
+                Practicing data structures and algorithmic complexity daily to engineer software that is memory-efficient and mathematically sound.
+              </p>
             </div>
-            <h2 className="text-xl font-extrabold text-foreground">03. EXPLORE</h2>
-            <p className="font-mono text-xs text-primary mt-0.5">Edge AI · TinyML · Mesh Relays</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
-              Researching autonomous multi-agent orchestration, on-device microcontroller intelligence, and decentralized offline communication.
-            </p>
+          </div>
+
+          {/* 04. EXPLORE */}
+          <div className="p-6 rounded-2xl border border-border bg-card/80 backdrop-blur-sm hover:border-blue-400/80 hover:shadow-[0_0_25px_rgba(96,165,250,0.25)] transition-all duration-300 group shadow-2xs flex flex-col justify-between cursor-default relative overflow-hidden">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20 mb-4 group-hover:scale-105 group-hover:border-blue-400/40 group-hover:shadow-[0_0_12px_rgba(96,165,250,0.4)] transition">
+                <Bot className="h-5 w-5" />
+              </div>
+              <h2 className="text-xl font-extrabold text-foreground">04. EXPLORE</h2>
+              <p className="font-mono text-xs text-primary mt-0.5">Edge AI · TinyML · Mesh Relays</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
+                Researching autonomous multi-agent orchestration, on-device microcontroller intelligence, and decentralized offline communication.
+              </p>
+            </div>
           </div>
         </div>
 
